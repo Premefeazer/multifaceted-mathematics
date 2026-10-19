@@ -1,6 +1,6 @@
 # Multifaceted Mathematics — Landing Page Plan
 
-> **Status:** Every section of the landing page is built. Phases 0–2b are committed; Phase 3 (How a lesson works, What's next, Closing) is built and waiting for review. Next up is QA (Phase 4).
+> **Status:** Every section of the landing page is built and QA'd (Phase 4, 2026-10-19). Phases 0–3 are committed; the QA fixes are waiting for review. Remaining: optional deploy, and a real-device check (see 12).
 > This file is both the plan and the tracker. Tick the checkboxes as each step finishes.
 > **Language rule:** everything on disk (docs, code, comments, commits) is English. Thai is for chat only.
 
@@ -204,32 +204,32 @@ Multifaceted Mathematics/
 - [x] **Phase 2 — Puzzle "Line it up"** (built and committed, then removed from the page; see 5.2)
 - [x] **Phase 2b — Topics section** (built, awaiting review)
 - [x] **Phase 3 — How a lesson works · What's next · Closing** (built, awaiting review)
-- [ ] **Phase 4 — QA:** responsive at 320 / 375 / 414 / 768 / 1024 / 1440 · keyboard + screen reader · reduced motion · Lighthouse · section 8 checklist · OG image
+- [x] **Phase 4 — QA** (done, results in section 12). Not done: OG image, because there is no public URL yet.
 - [ ] **Phase 5 (optional) — Deploy** to GitHub Pages or Netlify (your own account)
 
 ## 8. Definition of done
 
 **Must have**
-- [ ] Every color and font references a token in `tokens.css`. No hard-coded values.
-- [ ] Spacing uses a 4 pt scale.
-- [ ] Contrast passes WCAG AA and focus rings are clearly visible.
-- [ ] Every button / control has: default · hover · focus-visible · active · disabled (where relevant).
-- [ ] At 320 px there is no horizontal scroll and button text never wraps to two lines.
-- [ ] The whole page works with the keyboard alone.
-- [ ] Reduced-motion mode is fully usable.
-- [ ] Lighthouse: Performance and Accessibility ≥ 95 · total JS around 30 KB or less.
+- [x] Every color and font references a token in `tokens.css`. No hard-coded values.
+- [x] Spacing uses a 4 pt scale (a few component sizes such as the 3.25 rem button height are deliberate exceptions).
+- [x] Contrast passes WCAG AA and focus rings are clearly visible.
+- [x] Every button / control has: default · hover · focus-visible · active · disabled (where relevant).
+- [x] At 320 px there is no horizontal scroll and button text never wraps to two lines.
+- [x] The whole page works with the keyboard alone.
+- [x] Reduced-motion mode is fully usable.
+- [x] Lighthouse: Performance and Accessibility ≥ 95 · total JS around 30 KB or less.
 
 **Must not have (AI-slop tells)**
-- [ ] Purple-blue gradients, gradient text, glassmorphism, glowing blobs
-- [ ] Default fonts such as Inter / Roboto / Poppins / Montserrat
-- [ ] Emoji used as icons, three icon-in-rounded-box cards
-- [ ] Invented numbers, reviews or logos
-- [ ] Fake phone frames or fake browser bars
-- [ ] Italic headings, or a single italic word inside a heading
-- [ ] Tiny labels like "01 · FEATURES" above every section
-- [ ] Fade-up on scroll for every section
-- [ ] Everything centered / a grid of identical cards
-- [ ] A four-column footer whose links go nowhere
+- [x] Purple-blue gradients, gradient text, glassmorphism, glowing blobs
+- [x] Default fonts such as Inter / Roboto / Poppins / Montserrat
+- [x] Emoji used as icons, three icon-in-rounded-box cards
+- [x] Invented numbers, reviews or logos
+- [x] Fake phone frames or fake browser bars
+- [x] Italic headings, or a single italic word inside a heading
+- [x] Tiny labels like "01 · FEATURES" above every section
+- [x] Fade-up on scroll for every section
+- [x] Everything centered / a grid of identical cards
+- [x] A four-column footer whose links go nowhere
 
 ## 9. Not now
 
@@ -250,3 +250,25 @@ Log in / sign up · user accounts · backend / database · lesson content · puz
 - No logo existed, so a simple icosahedron mark + wordmark was designed (`assets/mark.svg`).
 - The footer is one copyright line with no links and no socials.
 - The landing page does not host puzzles or lessons. It shows the eight topics only.
+
+## 12. QA results (2026-10-19)
+
+| Area | Result |
+|---|---|
+| Responsive | Checked at 320, 375, 414, 768, 1024 and 1440 px: no horizontal scroll, no element past the viewport, no button text on two lines. Cards go 3 → 2 → 1 columns, the roadmap goes vertical on phones. |
+| Keyboard | Tab order is skip link → brand → Topics → Explore topics → hero shape → closing button, then leaves the page (no trap). Every stop shows a 3 px focus ring. Arrow keys turn the hero shape. |
+| Structure | One `h1`, then `h2` / `h3` in order. Landmarks: header, main, four labelled sections, footer. No duplicate ids, every control has a name, `lang="en"`. |
+| Reduced motion | Verified in headless Chrome with `prefers-reduced-motion: reduce`: no auto-spin, no inertia, headline curve already drawn, no smooth scroll, no transitions. Arrow keys still turn the shape. |
+| Lighthouse | Mobile 100 / 100 / 100 / 100 (performance, accessibility, best practices, SEO). Desktop 98 / 100 / 100 / 100 before the fixes below. CLS 0. |
+| JS size | About 9.5 KB unminified in total. |
+
+Fixes made during QA:
+- The brand link's accessible name did not contain its visible text (missing space), so it was reworded.
+- The Google Fonts stylesheet no longer blocks rendering (mobile performance 90 → 100).
+- The brand link now has a 44 px tap target, and the skip link has a stronger focus ring.
+
+Not covered, and worth doing before launch:
+- **A real screen reader** (NVDA, VoiceOver). Only the accessibility tree and Lighthouse were checked.
+- **Real phones and other browsers.** Everything ran in Chrome. Safari and Firefox are untested, in particular the `mask-image` fade of the page grid and the math symbols in the topic tiles on macOS and Android.
+- **Server settings at deploy.** Lighthouse still flags missing compression and cache headers, which come from the host (GitHub Pages and Netlify both gzip). Re-run Lighthouse on the live URL.
+- **An OG image and canonical URL**, once the final address is known.

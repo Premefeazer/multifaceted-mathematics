@@ -137,6 +137,8 @@ p {
 
 .skip:focus {
   top: var(--space-3);
+  outline: 3px solid var(--color-sky-deep);
+  outline-offset: 2px;
 }
 
 .nav {
@@ -160,6 +162,7 @@ p {
 .brand {
   display: flex;
   align-items: center;
+  min-height: 2.75rem;
   gap: var(--space-2);
   min-width: 0;
   color: var(--color-ink);
