@@ -280,7 +280,7 @@ Not covered, and worth doing before launch:
 
 **Steps for the owner (needs your GitHub account):**
 1. Create a new repository on github.com, for example `multifaceted-mathematics`. Leave "Add a README", ".gitignore" and "license" **unchecked**, so it starts empty. Choose **Public** (GitHub Pages on a private repository needs a paid plan).
-2. Decide which email shows on the commits before the first push. The six local commits use `a private address`, which becomes public. To hide it, turn on *Settings → Emails → Keep my email addresses private* and tell Claude the `ID+username@users.noreply.github.com` address shown there; the local commits can be re-authored safely while nothing is pushed.
+2. **Commit identity (done).** All commits use the GitHub noreply address, so no personal email is exposed. New commits use it too (set in this repository's git config).
 3. Connect and push (a browser sign-in window will appear the first time):
    ```bash
    git remote add origin https://github.com/YOUR-USERNAME/multifaceted-mathematics.git
