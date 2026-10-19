@@ -169,7 +169,7 @@ The HTML is the single source for topic names. The hero shape reads them from th
 
 ### 5.2 Parked: the puzzle
 
-"Line it up" (draggable slope and intercept sliders, two stars on a graph, direction-only hints) was built and committed in `1619819`, then removed from the page. It is recoverable from git and can be reused inside a Functions & Relations lesson later.
+"Line it up" (draggable slope and intercept sliders, two stars on a graph, direction-only hints) was built and committed in `40d071a`, then removed from the page. It is recoverable from git and can be reused inside a Functions & Relations lesson later.
 
 ## 6. Files and technique
 
