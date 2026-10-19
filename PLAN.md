@@ -1,6 +1,6 @@
 # Multifaceted Mathematics — Landing Page Plan
 
-> **Status:** Phases 0–1 committed. The on-page puzzle was built, committed, then removed on 2026-10-19 when the direction changed to topic-first. The topics section is built and waiting for review.
+> **Status:** Every section of the landing page is built. Phases 0–2b are committed; Phase 3 (How a lesson works, What's next, Closing) is built and waiting for review. Next up is QA (Phase 4).
 > This file is both the plan and the tracker. Tick the checkboxes as each step finishes.
 > **Language rule:** everything on disk (docs, code, comments, commits) is English. Thai is for chat only.
 
@@ -96,7 +96,7 @@ Motion rules:
 | Sub | Interactive math lessons for middle and high school, from logic and sets to calculus. Drag it, test it, figure it out. |
 | Reassurance | No account needed. First lessons are on the way. |
 | Topics heading | Math, from the ground up. |
-| Closing (planned) | Every problem has another side. |
+| Closing | Every problem has another side. |
 
 ## 5. Page structure
 
@@ -129,16 +129,16 @@ Motion rules:
 │ | (Coming soon)   | | (Coming soon)   | | (Coming soon)   |  │
 │ +-----------------+ +-----------------+ +-----------------+  │
 ├──────────────────────────────────────────────────────────────┤
-│ How a lesson works (planned)                                 │  3  Real lesson UI, annotated
+│ How a lesson works                                          │  3  Real lesson UI, annotated
 │ +---------------------+                                      │
 │ | What is 3/4 of 8?   |  <- One idea per screen              │
 │ |  [ 4 ]  [ 6 ]  [ 2 ]|  <- You try first, we explain after  │
 │ +---------------------+                                      │
 ├──────────────────────────────────────────────────────────────┤
-│ Now ---------------- Next ---------------- Later             │  4  What's next · honest roadmap (planned)
+│ Now ---------------- Next ---------------- Later             │  4  What's next · honest roadmap
 │ topics overview      first lessons         accounts          │
 ├──────────────────────────────────────────────────────────────┤
-│ Every problem has another side.           [Explore topics >] │  5  Closing + footer (planned)
+│ Every problem has another side.           [Explore topics >] │  5  Closing + footer
 │ © 2026 Multifaceted Mathematics                              │
 └──────────────────────────────────────────────────────────────┘
 ```
@@ -148,9 +148,9 @@ Motion rules:
 | 0 | Nav — floating capsule | Mark + wordmark and a **Topics** button. On mobile it is the same two items, no hamburger. | Built |
 | 1 | Hero | Headline left, draggable icosahedron right. On mobile the headline comes first. | Built |
 | 2 | Topics | 8 topic cards, two large then six small, each with a symbol tile, a thought-provoking question and a *Coming soon* tag. | Built |
-| 3 | How a lesson works | Explain the method with a lesson screen built from real HTML (no fake phone frame) plus callouts: *One idea per screen* · *You try first, we explain after* · *Hints, not answers* · *Five minutes, tops*. | Planned |
-| 4 | What's next | Honest roadmap that also explains why there is no login yet: *Now:* topic overview → *Next:* first lessons → *Later:* accounts, streaks, progress. | Planned |
-| 5 | Closing + footer | Big line *Every problem has another side.* + button. Footer is one © line, no links (the © line is already built). | Planned |
+| 3 | How a lesson works | Explain the method with a lesson screen built from real HTML (no fake phone frame) plus callouts: *One idea per screen* · *You try first, we explain after* · *Hints, not answers* · *Five minutes, tops*. | Built |
+| 4 | What's next | Honest roadmap that also explains why there is no login yet: *Now:* topic overview → *Next:* first lessons → *Later:* accounts, streaks, progress. | Built |
+| 5 | Closing + footer | Big line *Every problem has another side.* + button. A dark panel with *Every problem has another side.* and an **Explore topics** button. The footer is one © line, no links. | Built |
 
 ### 5.1 Topics (in learning order)
 
@@ -203,7 +203,7 @@ Multifaceted Mathematics/
 - [x] **Phase 1 — Nav + Hero + icosahedron** (committed)
 - [x] **Phase 2 — Puzzle "Line it up"** (built and committed, then removed from the page; see 5.2)
 - [x] **Phase 2b — Topics section** (built, awaiting review)
-- [ ] **Phase 3 — How a lesson works · What's next · Closing**
+- [x] **Phase 3 — How a lesson works · What's next · Closing** (built, awaiting review)
 - [ ] **Phase 4 — QA:** responsive at 320 / 375 / 414 / 768 / 1024 / 1440 · keyboard + screen reader · reduced motion · Lighthouse · section 8 checklist · OG image
 - [ ] **Phase 5 (optional) — Deploy** to GitHub Pages or Netlify (your own account)
 

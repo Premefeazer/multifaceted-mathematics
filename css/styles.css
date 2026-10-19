@@ -216,7 +216,8 @@ p {
   display: block;
 }
 
-.hero__title .every {
+.hero__title .every,
+.closing .every {
   position: relative;
   display: inline-block;
 }
@@ -322,7 +323,10 @@ p {
 
 /* ---------- topics ---------- */
 
-.topics {
+.topics,
+.how,
+.next,
+.closing {
   max-width: 75rem;
   margin-inline: auto;
   padding: var(--space-12) var(--space-6) var(--space-16);
@@ -332,14 +336,18 @@ p {
   margin-bottom: var(--space-8);
 }
 
-.topics__head h2 {
+.topics__head h2,
+.how h2,
+.next h2 {
   font-size: clamp(2rem, 1.2rem + 3vw, 3rem);
   font-weight: 800;
   line-height: 1.05;
   letter-spacing: -0.035em;
 }
 
-.topics__head p {
+.topics__head p,
+.how__lead,
+.next__lead {
   max-width: 44ch;
   margin-top: var(--space-3);
   color: var(--color-ink-soft);
@@ -439,7 +447,10 @@ p {
 }
 
 @media (max-width: 40rem) {
-  .topics {
+  .topics,
+  .how,
+  .next,
+  .closing {
     padding-inline: var(--space-4);
   }
 
@@ -451,6 +462,359 @@ p {
   .topic--lead {
     grid-column: auto;
     padding: var(--space-6);
+  }
+}
+
+/* ---------- how a lesson works ---------- */
+
+.how {
+  display: grid;
+  grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
+  gap: var(--space-12);
+  align-items: center;
+}
+
+.how__figure {
+  grid-column: 1;
+  grid-row: 1;
+  margin: 0;
+}
+
+.how__text {
+  grid-column: 2;
+  grid-row: 1;
+}
+
+.principles {
+  margin: var(--space-8) 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.principles li {
+  padding: var(--space-4) 0;
+  border-top: var(--rule) solid var(--color-hairline);
+}
+
+.principles h3 {
+  margin: 0;
+  font: 800 1.125rem / 1.2 var(--font-display);
+  letter-spacing: -0.02em;
+}
+
+.principles p {
+  margin-top: var(--space-1);
+  color: var(--color-ink-soft);
+}
+
+/* the example lesson screen: real HTML, not a fake device frame */
+
+.lesson__stack {
+  position: relative;
+  isolation: isolate;
+  padding: 0 var(--space-3) var(--space-3) 0;
+}
+
+.lesson__stack::before {
+  content: "";
+  position: absolute;
+  inset: var(--space-3) 0 0 var(--space-3);
+  z-index: -1;
+  background: var(--color-sky);
+  border-radius: var(--radius-lg);
+  opacity: 0.5;
+}
+
+.lesson__card {
+  display: grid;
+  gap: var(--space-6);
+  padding: var(--space-8);
+  background: var(--color-sheet);
+  border: var(--rule) solid var(--color-hairline);
+  border-radius: var(--radius-lg);
+  box-shadow: 0 24px 48px -28px var(--color-shadow-strong);
+}
+
+.lesson__top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-4);
+}
+
+.lesson__topic {
+  color: var(--color-ink-soft);
+  font: 700 var(--text-sm) / 1 var(--font-display);
+}
+
+.lesson__progress {
+  display: flex;
+  gap: var(--space-1);
+  width: 7rem;
+}
+
+.lesson__progress span {
+  flex: 1;
+  height: 6px;
+  background: var(--color-sky);
+  border-radius: var(--radius-pill);
+  opacity: 0.5;
+}
+
+.lesson__progress .is-done {
+  background: var(--color-sky-deep);
+  opacity: 1;
+}
+
+.lesson__q {
+  font: 800 1.5rem / 1.25 var(--font-display);
+  letter-spacing: -0.02em;
+}
+
+.lesson__options {
+  display: grid;
+  gap: var(--space-3);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.option {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-3);
+  min-height: 3rem;
+  padding: var(--space-3) var(--space-4);
+  color: var(--color-ink-soft);
+  background: var(--color-sheet);
+  border: var(--rule) solid var(--color-hairline);
+  border-radius: var(--radius-md);
+}
+
+.option.is-picked {
+  color: var(--color-ink);
+  font-weight: 700;
+  background: var(--color-correct-bg);
+  border-color: var(--color-correct);
+}
+
+.option__icon {
+  display: grid;
+  flex: none;
+  place-items: center;
+  width: 1.5rem;
+  height: 1.5rem;
+  color: var(--color-ink);
+  background: var(--color-correct);
+  border-radius: 50%;
+}
+
+.option__icon svg {
+  width: 1rem;
+  height: 1rem;
+}
+
+.lesson__explain {
+  padding: var(--space-4);
+  background: var(--color-paper);
+  border-radius: var(--radius-md);
+}
+
+.how__figure figcaption {
+  margin-top: var(--space-3);
+  color: var(--color-ink-soft);
+  font-size: var(--text-sm);
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+/* ---------- what's next: a three-step line ---------- */
+
+.roadmap {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: var(--space-8);
+  margin: var(--space-12) 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.stage {
+  position: relative;
+  padding-top: var(--space-8);
+}
+
+.stage::before,
+.stage::after {
+  content: "";
+  position: absolute;
+  top: 0;
+}
+
+.stage::before {
+  left: 0;
+  width: 1rem;
+  height: 1rem;
+  background: var(--color-sheet);
+  border: 2px solid var(--color-ink);
+  border-radius: 50%;
+}
+
+.stage::after {
+  top: 0.5rem;
+  left: 1.5rem;
+  right: calc(var(--space-8) * -1 + 0.5rem);
+  border-top: 2px dashed var(--color-ink-soft);
+}
+
+.stage--now::before {
+  background: var(--color-ink);
+}
+
+.stage--now::after {
+  border-top-style: solid;
+  border-top-color: var(--color-ink);
+}
+
+.stage--later::before {
+  border-style: dashed;
+  border-color: var(--color-ink-soft);
+}
+
+.stage--later::after {
+  display: none;
+}
+
+.stage h3 {
+  margin: 0;
+  font: 800 1.25rem / 1.2 var(--font-display);
+  letter-spacing: -0.02em;
+}
+
+.stage p {
+  max-width: 28ch;
+  margin-top: var(--space-1);
+  color: var(--color-ink-soft);
+}
+
+/* ---------- closing ---------- */
+
+.closing {
+  padding-top: 0;
+}
+
+.closing__panel {
+  position: relative;
+  isolation: isolate;
+  display: grid;
+  justify-items: start;
+  gap: var(--space-6);
+  padding: var(--space-24) var(--space-12);
+  overflow: hidden;
+  color: var(--color-sheet);
+  background: var(--color-ink);
+  border-radius: var(--radius-lg);
+}
+
+.closing__panel::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background-image:
+    linear-gradient(var(--color-line-on-ink) 1px, transparent 1px),
+    linear-gradient(90deg, var(--color-line-on-ink) 1px, transparent 1px);
+  background-size: 24px 24px;
+  mask-image: radial-gradient(ellipse 70% 100% at 100% 100%, black, transparent);
+}
+
+.closing h2 {
+  max-width: 14ch;
+  font-size: clamp(2.25rem, 1rem + 5vw, 4rem);
+  font-weight: 800;
+  line-height: 1.02;
+  letter-spacing: -0.035em;
+}
+
+.closing .curve path {
+  stroke-dashoffset: 0;
+  animation: none;
+}
+
+.closing p {
+  color: var(--color-on-ink-soft);
+  font-size: var(--text-lead);
+}
+
+.btn--light {
+  color: var(--color-ink);
+}
+
+.btn--light .btn__face {
+  background: var(--color-sheet);
+  box-shadow: none;
+}
+
+.btn--light:hover .btn__face {
+  background: var(--color-paper);
+}
+
+.btn--light:focus-visible {
+  outline-color: var(--color-sheet);
+}
+
+@media (max-width: 52rem) {
+  .how {
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--space-8);
+  }
+
+  .how__figure,
+  .how__text {
+    grid-column: 1;
+    grid-row: auto;
+  }
+}
+
+@media (max-width: 40rem) {
+  .lesson__card {
+    padding: var(--space-6);
+  }
+
+  .roadmap {
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--space-6);
+    margin-top: var(--space-8);
+  }
+
+  .stage {
+    padding: 0 0 0 var(--space-8);
+  }
+
+  .stage::after {
+    top: 1.5rem;
+    bottom: calc(var(--space-6) * -1 + 0.5rem);
+    left: 0.5rem;
+    right: auto;
+    border-top: 0;
+    border-left: 2px dashed var(--color-ink-soft);
+  }
+
+  .stage--now::after {
+    border-left-style: solid;
+    border-left-color: var(--color-ink);
+  }
+
+  .closing__panel {
+    padding: var(--space-12) var(--space-6);
   }
 }
 
