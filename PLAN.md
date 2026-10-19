@@ -186,6 +186,7 @@ Multifaceted Mathematics/
 ├── tests/
 │   └── geometry.test.js pure-logic tests, run with `node --test`
 ├── assets/mark.svg      logo mark and favicon (generated from the real geometry)
+├── .github/workflows/pages.yml  tests, then publishes only index.html, css, js, assets
 ├── .claude/launch.json  preview server config for the Claude app
 └── PLAN.md
 ```
@@ -205,7 +206,7 @@ Multifaceted Mathematics/
 - [x] **Phase 2b — Topics section** (built, awaiting review)
 - [x] **Phase 3 — How a lesson works · What's next · Closing** (built, awaiting review)
 - [x] **Phase 4 — QA** (done, results in section 12). Not done: OG image, because there is no public URL yet.
-- [ ] **Phase 5 (optional) — Deploy** to GitHub Pages or Netlify (your own account)
+- [ ] **Phase 5 — Deploy to GitHub Pages.** Prepared: workflow written and tested locally (section 13). Waiting for the owner steps below.
 
 ## 8. Definition of done
 
@@ -272,3 +273,26 @@ Not covered, and worth doing before launch:
 - **Real phones and other browsers.** Everything ran in Chrome. Safari and Firefox are untested, in particular the `mask-image` fade of the page grid and the math symbols in the topic tiles on macOS and Android.
 - **Server settings at deploy.** Lighthouse still flags missing compression and cache headers, which come from the host (GitHub Pages and Netlify both gzip). Re-run Lighthouse on the live URL.
 - **An OG image and canonical URL**, once the final address is known.
+
+## 13. Deploy to GitHub Pages
+
+**Prepared in the repo (done):** branch renamed to `main`; `.github/workflows/pages.yml` runs `node --test`, copies only `index.html`, `css/`, `js/`, `assets/` into `_site/`, and publishes that. The staged site was served from a subpath (`/multifaceted-mathematics/`) and loaded with no errors, so the site works both at `user.github.io/repo/` and at a custom domain. All paths in the site are relative.
+
+**Steps for the owner (needs your GitHub account):**
+1. Create a new repository on github.com, for example `multifaceted-mathematics`. Leave "Add a README", ".gitignore" and "license" **unchecked**, so it starts empty. Choose **Public** (GitHub Pages on a private repository needs a paid plan).
+2. Decide which email shows on the commits before the first push. The six local commits use `a private address`, which becomes public. To hide it, turn on *Settings → Emails → Keep my email addresses private* and tell Claude the `ID+username@users.noreply.github.com` address shown there; the local commits can be re-authored safely while nothing is pushed.
+3. Connect and push (a browser sign-in window will appear the first time):
+   ```bash
+   git remote add origin https://github.com/YOUR-USERNAME/multifaceted-mathematics.git
+   git push -u origin main
+   ```
+4. In the repository open *Settings → Pages → Build and deployment → Source* and choose **GitHub Actions**.
+5. Open the *Actions* tab. If the first run failed because Pages was not switched on yet, open it and press *Re-run all jobs*. A green run shows the site address.
+6. Open `https://YOUR-USERNAME.github.io/multifaceted-mathematics/` and look at it on a real phone.
+
+**Afterwards (Claude can do these once the address is known):**
+- Add the canonical URL and Open Graph tags plus a 1200 × 630 share image.
+- Re-run Lighthouse on the live address.
+- Optional: a custom domain (*Settings → Pages → Custom domain*, plus a DNS record at the domain registrar).
+
+**Good to know:** the live site contains only the four items above, but a public repository also exposes `PLAN.md`, `tests/`, `.claude/` and `.hallmark/`. Remove them from the repository, or make it private on a paid plan, if that matters. The workflow uses `actions/checkout@v4`, `configure-pages@v5`, `upload-pages-artifact@v3` and `deploy-pages@v4`; if GitHub reports a newer major version, bump the number.
