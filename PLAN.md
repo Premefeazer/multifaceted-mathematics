@@ -1,6 +1,6 @@
 # Multifaceted Mathematics — Landing Page Plan
 
-> **Status:** Every section of the landing page is built and QA'd (Phase 4, 2026-10-19). Phases 0–3 are committed; the QA fixes are waiting for review. Remaining: optional deploy, and a real-device check (see 12).
+> **Status:** The landing page is built, QA'd and live at https://premefeazer.github.io/multifaceted-mathematics/ (2026-10-19). Remaining: the checks listed under "Not covered" in section 12 (a real screen reader, Safari and Firefox, real phones, share previews in chat apps), then the next project: the lessons themselves.
 > This file is both the plan and the tracker. Tick the checkboxes as each step finishes.
 > **Language rule:** everything on disk (docs, code, comments, commits) is English. Thai is for chat only.
 
@@ -209,7 +209,7 @@ Multifaceted Mathematics/
 - [x] **Phase 2b — Topics section** (built, awaiting review)
 - [x] **Phase 3 — How a lesson works · What's next · Closing** (built, awaiting review)
 - [x] **Phase 4 — QA** (done, results in section 12). Not done: OG image, because there is no public URL yet.
-- [ ] **Phase 5 — Deploy to GitHub Pages.** Prepared: workflow written and tested locally (section 13). Waiting for the owner steps below.
+- [x] **Phase 5 — Deploy to GitHub Pages** (live at https://premefeazer.github.io/multifaceted-mathematics/; see sections 13 and 14).
 
 ## 8. Definition of done
 
@@ -304,4 +304,12 @@ Not covered, and worth doing before launch:
 
 The first live Lighthouse run (mobile) scored performance 85–88 with a first paint of about 3.3 s, because the real host adds about 550 ms to the first byte and the two stylesheets cost another round trip. Reproduced locally with a server that adds 500 ms per response: separate CSS scored 82–86 (first paint 3.2–3.5 s, matching the live numbers); CSS inlined scored 99 (first paint 1.2 s, largest paint 2.0 s).
 
-**Fix:** the deploy workflow inlines `css/tokens.css` and `css/styles.css` into the published `index.html`. Source files stay separate for editing, and local development is unchanged. The build step throws if either stylesheet link is missing, so a broken page is never deployed. **Check after the next deploy:** re-run Lighthouse on the live address; expect about 95 or better. If it is lower, the host's latency is the cause, not the page.
+**Fix:** the deploy workflow inlines `css/tokens.css` and `css/styles.css` into the published `index.html`. Source files stay separate for editing, and local development is unchanged. The build step throws if either stylesheet link is missing, so a broken page is never deployed. **Result on the live site (after the deploy of `622c85d`, mobile, two runs):**
+
+| Run | Performance | Accessibility | Best practices | SEO | First paint | Largest paint | CLS |
+|---|---|---|---|---|---|---|---|
+| Before | 85 | 100 | 100 | 100 | 3.3 s | 3.3 s | 0 |
+| After, run 1 | 99 | 100 | 100 | 100 | 1.2 s | 1.9 s | 0 |
+| After, run 2 | 100 | 100 | 100 | 100 | 0.9 s | 1.7 s | 0 |
+
+Also confirmed on the live address: the page has two inlined `<style>` blocks and no local stylesheet link, `/css/styles.css` and `/PLAN.md` return 404 (only the four site items are published), no console errors, and `og.png` loads. Lighthouse scores vary a little between runs, so treat 99–100 as the range.
