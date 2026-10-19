@@ -27,10 +27,12 @@ jobs:
         run: node --test
 
       # Publish only the site. PLAN.md, tests and tool config stay out of the public site.
+      # index.html gets its CSS inlined so the first paint needs no extra request (scripts/inline-css.mjs).
       - name: Stage site files
         run: |
           mkdir _site
-          cp -r index.html css js assets _site/
+          cp -r js assets _site/
+          node scripts/inline-css.mjs index.html _site/index.html
 
       - uses: actions/configure-pages@v5
 

@@ -183,8 +183,11 @@ Multifaceted Mathematics/
 │   ├── geometry.js      pure icosahedron math (no DOM, unit-tested)
 │   ├── polyhedron.js    canvas 2D: shading, drag, inertia, tap-to-pick
 │   └── main.js          wires the hero shape to the topic cards
+├── scripts/
+│   └── inline-css.mjs   deploy-time step: inlines the two stylesheets into index.html
 ├── tests/
-│   └── geometry.test.js pure-logic tests, run with `node --test`
+│   ├── geometry.test.js pure-logic tests, run with `node --test`
+│   └── inline.test.js
 ├── assets/mark.svg      logo mark and favicon (generated from the real geometry)
 ├── .github/workflows/pages.yml  tests, then publishes only index.html, css, js, assets
 ├── .claude/launch.json  preview server config for the Claude app
@@ -276,7 +279,7 @@ Not covered, and worth doing before launch:
 
 ## 13. Deploy to GitHub Pages
 
-**Prepared in the repo (done):** branch renamed to `main`; `.github/workflows/pages.yml` runs `node --test`, copies only `index.html`, `css/`, `js/`, `assets/` into `_site/`, and publishes that. The staged site was served from a subpath (`/multifaceted-mathematics/`) and loaded with no errors, so the site works both at `user.github.io/repo/` and at a custom domain. All paths in the site are relative.
+**Prepared in the repo (done):** branch renamed to `main`; `.github/workflows/pages.yml` runs `node --test`, copies only `index.html`, `js/` and `assets/` into `_site/` (with the CSS inlined into `index.html` by `scripts/inline-css.mjs`), and publishes that. The staged site was served from a subpath (`/multifaceted-mathematics/`) and loaded with no errors, so the site works both at `user.github.io/repo/` and at a custom domain. All paths in the site are relative.
 
 **Steps for the owner (needs your GitHub account):**
 1. Create a new repository on github.com, for example `multifaceted-mathematics`. Leave "Add a README", ".gitignore" and "license" **unchecked**, so it starts empty. Choose **Public** (GitHub Pages on a private repository needs a paid plan).
@@ -296,3 +299,9 @@ Not covered, and worth doing before launch:
 - Optional: a custom domain (*Settings → Pages → Custom domain*, plus a DNS record at the domain registrar).
 
 **Good to know:** the live site contains only the four items above, but a public repository also exposes `PLAN.md`, `tests/`, `.claude/` and `.hallmark/`. Remove them from the repository, or make it private on a paid plan, if that matters. The workflow uses `actions/checkout@v4`, `configure-pages@v5`, `upload-pages-artifact@v3` and `deploy-pages@v4`; if GitHub reports a newer major version, bump the number.
+
+## 14. Live performance (2026-10-19)
+
+The first live Lighthouse run (mobile) scored performance 85–88 with a first paint of about 3.3 s, because the real host adds about 550 ms to the first byte and the two stylesheets cost another round trip. Reproduced locally with a server that adds 500 ms per response: separate CSS scored 82–86 (first paint 3.2–3.5 s, matching the live numbers); CSS inlined scored 99 (first paint 1.2 s, largest paint 2.0 s).
+
+**Fix:** the deploy workflow inlines `css/tokens.css` and `css/styles.css` into the published `index.html`. Source files stay separate for editing, and local development is unchanged. The build step throws if either stylesheet link is missing, so a broken page is never deployed. **Check after the next deploy:** re-run Lighthouse on the live address; expect about 95 or better. If it is lower, the host's latency is the cause, not the page.
