@@ -1,6 +1,6 @@
 # Multifaceted Mathematics — Landing Page Plan
 
-> **Status:** Phase 0 done, Phase 1 built and waiting for Checkpoint 1 review · updated 2026-10-19
+> **Status:** Phases 0–1 committed. Phase 2 (puzzle 1) built and waiting for Checkpoint 2 review · updated 2026-10-19
 > This file is both the plan and the tracker. Tick the checkboxes as each step finishes.
 > **Language rule:** everything on disk (docs, code, comments, commits) is English. Thai is for chat only.
 
@@ -98,7 +98,7 @@ Motion rules:
 | Hero | **See math from every side.** |
 | Sub | Hands-on puzzles for middle and high school math. Drag it, test it, figure it out. |
 | Correct | That's the one. |
-| Wrong | Too steep — try a smaller slope. |
+| Wrong | The slope is too high. Try lowering it. |
 | Closing | Every problem has another side. |
 
 ## 5. Page structure
@@ -163,7 +163,8 @@ Motion rules:
 | **3. Fair or not?** | Probability | Simulate flipping a coin 10 / 100 times and watch the share of heads. | Answer *"With lots of flips, heads gets close to…"* → 1/2. |
 
 - After all 3: *3 for 3 — you just saw three sides of math.* + a link to What's next.
-- Wrong answers get a hint specific to the mistake (e.g. *Too steep — try a smaller slope.*), not just "Wrong".
+- Wrong answers get a hint specific to the mistake (e.g. *The slope is too high. Try lowering it.*), not just "Wrong". Hints give a direction, never the answer.
+- Built behavior: stars light up live as the line touches them; Check confirms; success explains what the slope and intercept mean. On mobile the graph stays pinned while the sliders scroll.
 - Accessibility: sliders are `<input type="range">`. Triangle corners move with arrow keys. Results are announced through `aria-live`.
 
 ### 5.2 Facets — 8 branches (draft)
@@ -194,9 +195,11 @@ Multifaceted Mathematics/
 │   ├── polyhedron.js    canvas 2D: shading, drag, inertia, tap-to-pick
 │   ├── facets.js        the 8 branches of math, shared by hero and Facets section
 │   ├── main.js          wires the page together
-│   └── puzzle.js        (Phase 2) puzzle logic
+│   ├── lineit.js        puzzle 1 logic: stars, hits, hints, equation (pure, tested)
+│   └── puzzle.js        puzzle 1 UI: graph, sliders, feedback states
 ├── tests/
-│   └── geometry.test.js pure-logic tests, run with `node --test`
+│   ├── geometry.test.js pure-logic tests, run with `node --test`
+│   └── lineit.test.js
 ├── assets/mark.svg      logo mark and favicon (generated from the real geometry)
 ├── .claude/launch.json  preview server config for the Claude app
 └── PLAN.md
@@ -213,7 +216,7 @@ Multifaceted Mathematics/
 
 - [x] **Phase 0 — Setup:** `git init` · file structure · `tokens.css` · fonts · launch config for in-app preview
 - [x] **Phase 1 — Nav + Hero + icosahedron** (built, awaiting review) → **Checkpoint 1:** colors, fonts, overall feel (the cheapest point to change direction)
-- [ ] **Phase 2 — Puzzle 1 "Line it up"** with every state → **Checkpoint 2:** does it feel like Duolingo / Brilliant yet?
+- [x] **Phase 2 — Puzzle 1 "Line it up"** with every state (built, awaiting review) → **Checkpoint 2:** does it feel like Duolingo / Brilliant yet?
 - [ ] **Phase 3 — Facets · How a lesson works · What's next · Footer**
 - [ ] **Phase 4 — Puzzles 2–3** + motion polish
 - [ ] **Phase 5 — QA:** responsive at 320 / 375 / 414 / 768 / 1024 / 1440 · keyboard + screen reader · reduced motion · Lighthouse · section 8 checklist · meta / OG image / favicon

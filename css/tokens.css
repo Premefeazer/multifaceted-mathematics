@@ -14,6 +14,9 @@
   --color-spark: oklch(88% 0.16 95);
   --color-correct: oklch(76% 0.15 160);
   --color-wrong: oklch(64% 0.2 20);
+  --color-correct-bg: oklch(95% 0.05 160);
+  --color-wrong-bg: oklch(95% 0.04 20);
+  --color-spark-glow: oklch(88% 0.16 95 / 0.4);
 
   /* graph-paper lines, hairlines, soft shadows */
   --color-line-minor: oklch(62% 0.15 248 / 0.07);

@@ -1,8 +1,11 @@
 import { mountPolyhedron } from './polyhedron.js';
 import { FACETS } from './facets.js';
+import { mountLineIt } from './puzzle.js';
 
 const FACET_FACES = [0, 4, 7, 10, 12, 15, 17, 19]; // which of the 20 faces stands for each facet
 const TRY_IT = 3; // Functions & Graphs: the facet that puzzle 1 belongs to
+
+mountLineIt(document.getElementById('line-it'));
 
 const readout = document.getElementById('ico-readout');
 readout.hidden = false;

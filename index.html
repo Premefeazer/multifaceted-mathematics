@@ -43,10 +43,68 @@
       </div>
     </section>
 
-    <section class="try" id="try">
-      <div class="sheet">
-        <h2>Try it</h2>
-        <p>The first puzzle lands here in the next build.</p>
+    <section class="try" id="try" aria-labelledby="try-title">
+      <div class="try__head">
+        <h2 id="try-title">Try it.</h2>
+        <p>Three short puzzles from three branches of math. Start with the first.</p>
+      </div>
+
+      <div class="sheet" id="line-it">
+        <ol class="steps" aria-label="Puzzle progress">
+          <li class="step is-current" data-step="1" aria-current="step">Line it up</li>
+          <li class="step" data-step="2">The 180° trick<small>Coming soon</small></li>
+          <li class="step" data-step="3">Fair or not?<small>Coming soon</small></li>
+        </ol>
+
+        <div class="puzzle">
+          <div class="puzzle__graph">
+            <svg viewBox="-6.5 -6.5 13 13" role="img" aria-label="A graph with two stars, at (−2, 4) and (2, −2), and a line that the sliders control.">
+              <g id="li-grid"></g>
+              <line id="li-line" class="g-line"/>
+              <g id="li-stars"></g>
+            </svg>
+          </div>
+
+          <div class="puzzle__panel">
+            <div>
+              <p class="puzzle__facet">Functions &amp; Graphs</p>
+              <h3 class="puzzle__title">Line it up</h3>
+              <p class="puzzle__task">Make the line pass through both stars.</p>
+            </div>
+
+            <p class="equation"><math id="li-eq"></math></p>
+
+            <div class="slider">
+              <div class="slider__row">
+                <label for="li-m">Slope <math><mi>m</mi></math><span class="slider__hint">how steep</span></label>
+                <output id="li-m-out" for="li-m"></output>
+              </div>
+              <input id="li-m" type="range" min="-4" max="4" step="0.5" value="1">
+            </div>
+
+            <div class="slider">
+              <div class="slider__row">
+                <label for="li-b">Intercept <math><mi>b</mi></math><span class="slider__hint">where it crosses the y-axis</span></label>
+                <output id="li-b-out" for="li-b"></output>
+              </div>
+              <input id="li-b" type="range" min="-5" max="5" step="0.5" value="0">
+            </div>
+
+            <div class="feedback" role="status" aria-live="polite" data-state="idle">
+              <span class="feedback__icon" aria-hidden="true">
+                <svg class="glyph glyph--idle" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M12 11v6M12 7.5v.01"/></svg>
+                <svg class="glyph glyph--error" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M12 6.5v7M12 17.5v.01"/></svg>
+                <svg class="glyph glyph--success" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m6.5 12.5 3.5 3.5 7.5-8"/></svg>
+              </span>
+              <p><strong class="feedback__title"></strong> <span class="feedback__text"></span></p>
+            </div>
+
+            <div class="actions">
+              <button class="btn" id="li-check" type="button"><span class="btn__face">Check</span></button>
+              <button class="btn btn--ghost" id="li-reset" type="button"><span class="btn__face">Reset</span></button>
+            </div>
+          </div>
+        </div>
       </div>
     </section>
   </main>

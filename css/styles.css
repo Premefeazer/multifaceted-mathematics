@@ -55,6 +55,11 @@ p {
 
 .btn {
   display: inline-block;
+  padding: 0;
+  font: inherit;
+  cursor: pointer;
+  background: none;
+  border: 0;
   color: var(--color-sheet);
   text-decoration: none;
   white-space: nowrap;
@@ -332,16 +337,376 @@ p {
   box-shadow: 0 24px 48px -28px var(--color-shadow-strong);
 }
 
-.sheet h2 {
+.try__head {
+  margin-bottom: var(--space-8);
+}
+
+.try__head h2 {
   font-size: clamp(2rem, 1.2rem + 3vw, 3rem);
   font-weight: 800;
+  line-height: 1.05;
+  letter-spacing: -0.035em;
+}
+
+.try__head p {
+  max-width: 44ch;
+  margin-top: var(--space-3);
+  color: var(--color-ink-soft);
+  font-size: var(--text-lead);
+}
+
+/* progress: one bar per puzzle, filled with transform only */
+
+.steps {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: var(--space-3);
+  margin: 0 0 var(--space-8);
+  padding: 0;
+  list-style: none;
+}
+
+.step {
+  position: relative;
+  padding-top: var(--space-4);
+  color: var(--color-ink-soft);
+  font: 700 var(--text-sm) / 1.3 var(--font-display);
+}
+
+.step::before,
+.step::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 6px;
+  border-radius: var(--radius-pill);
+}
+
+.step::before {
+  background: var(--color-sky);
+  opacity: 0.5;
+}
+
+.step::after {
+  background: var(--color-sky-deep);
+  transform: scaleX(var(--progress, 0));
+  transform-origin: left;
+  transition: transform 500ms var(--ease-out);
+}
+
+.step.is-current,
+.step.is-done {
+  color: var(--color-ink);
+}
+
+.step.is-done::after {
+  background: var(--color-correct);
+}
+
+.step small {
+  display: block;
+  font-weight: 500;
+  color: var(--color-ink-soft);
+}
+
+/* puzzle 1 */
+
+.puzzle {
+  display: grid;
+  grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
+  gap: var(--space-8);
+  align-items: start;
+}
+
+.puzzle__graph {
+  overflow: hidden;
+  background: var(--color-sheet);
+  border: var(--rule) solid var(--color-hairline);
+  border-radius: var(--radius-lg);
+}
+
+.puzzle__graph svg {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.puzzle__graph.is-shaking {
+  animation: shake 380ms var(--ease-out);
+}
+
+@keyframes shake {
+  20% { transform: translateX(-6px); }
+  40% { transform: translateX(6px); }
+  60% { transform: translateX(-4px); }
+  80% { transform: translateX(4px); }
+}
+
+.g-grid-line {
+  stroke: var(--color-line-major);
+  stroke-width: 1;
+  vector-effect: non-scaling-stroke;
+}
+
+.g-axis {
+  stroke: var(--color-ink-soft);
+  stroke-width: 1.5;
+  vector-effect: non-scaling-stroke;
+}
+
+.g-tick {
+  fill: var(--color-ink-soft);
+  font: 400 0.46px var(--font-mono);
+}
+
+.g-line {
+  stroke: var(--color-sky-deep);
+  stroke-width: 3.5;
+  stroke-linecap: round;
+  vector-effect: non-scaling-stroke;
+}
+
+.star__shape {
+  fill: var(--color-sheet);
+  stroke: var(--color-sky-deep);
+  stroke-width: 1.5;
+  stroke-linejoin: round;
+  vector-effect: non-scaling-stroke;
+  transform-box: fill-box;
+  transform-origin: center;
+  transition: transform 200ms var(--ease-out);
+}
+
+.star__halo {
+  fill: var(--color-spark-glow);
+  opacity: 0;
+  transition: opacity 200ms var(--ease-out);
+}
+
+.star__label {
+  fill: var(--color-ink-soft);
+  font: 400 0.5px var(--font-mono);
+  paint-order: stroke;
+  stroke: var(--color-sheet);
+  stroke-width: 0.18px;
+}
+
+.star.is-lit .star__shape {
+  fill: var(--color-spark);
+  stroke: var(--color-ink);
+  transform: scale(1.2);
+}
+
+.star.is-lit .star__halo {
+  opacity: 1;
+}
+
+.puzzle__panel {
+  display: grid;
+  gap: var(--space-6);
+}
+
+.puzzle__facet {
+  color: var(--color-ink-soft);
+  font-size: var(--text-sm);
+}
+
+.puzzle__title {
+  margin: var(--space-1) 0 var(--space-2);
+  font-size: 1.75rem;
+  font-weight: 800;
+  line-height: 1.1;
   letter-spacing: -0.03em;
 }
 
-.sheet p {
-  max-width: 40ch;
-  margin-top: var(--space-3);
+.puzzle__task {
   color: var(--color-ink-soft);
+}
+
+.equation {
+  width: fit-content;
+  min-width: 11rem;
+  padding: var(--space-3) var(--space-4);
+  font-size: 1.5rem;
+  background: var(--color-paper);
+  border-radius: var(--radius-md);
+}
+
+.equation math {
+  font-family: var(--font-body);
+}
+
+.slider {
+  display: grid;
+  gap: var(--space-1);
+}
+
+.slider__row {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: var(--space-4);
+}
+
+.slider label {
+  font-weight: 700;
+}
+
+.slider__hint {
+  display: block;
+  color: var(--color-ink-soft);
+  font-size: var(--text-sm);
+  font-weight: 400;
+}
+
+.slider output {
+  font: 700 1.125rem / 1 var(--font-mono);
+}
+
+.slider input {
+  appearance: none;
+  -webkit-appearance: none;
+  width: 100%;
+  height: 2rem;
+  margin: 0;
+  background: transparent;
+  cursor: pointer;
+}
+
+.slider input::-webkit-slider-runnable-track {
+  height: 6px;
+  background: var(--color-sky);
+  border-radius: var(--radius-pill);
+}
+
+.slider input::-moz-range-track {
+  height: 6px;
+  background: var(--color-sky);
+  border-radius: var(--radius-pill);
+}
+
+.slider input::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 1.5rem;
+  height: 1.5rem;
+  margin-top: calc((6px - 1.5rem) / 2);
+  background: var(--color-ink);
+  border: 3px solid var(--color-sheet);
+  border-radius: 50%;
+  box-shadow: 0 2px 8px var(--color-shadow-strong);
+  transition: transform var(--dur-fast) var(--ease-out);
+}
+
+.slider input::-moz-range-thumb {
+  box-sizing: border-box;
+  width: 1.5rem;
+  height: 1.5rem;
+  background: var(--color-ink);
+  border: 3px solid var(--color-sheet);
+  border-radius: 50%;
+  box-shadow: 0 2px 8px var(--color-shadow-strong);
+  transition: transform var(--dur-fast) var(--ease-out);
+}
+
+.slider input:hover::-webkit-slider-thumb {
+  transform: scale(1.1);
+}
+
+.slider input:hover::-moz-range-thumb {
+  transform: scale(1.1);
+}
+
+.slider input:focus-visible {
+  outline: none;
+}
+
+.slider input:focus-visible::-webkit-slider-thumb {
+  outline: 3px solid var(--color-sky-deep);
+  outline-offset: 2px;
+}
+
+.slider input:focus-visible::-moz-range-thumb {
+  outline: 3px solid var(--color-sky-deep);
+  outline-offset: 2px;
+}
+
+/* feedback: icon + words, never color alone */
+
+.feedback {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-3);
+  min-height: 4.75rem;
+  padding: var(--space-3) var(--space-4);
+  background: var(--color-paper);
+  border: var(--rule) solid var(--color-hairline);
+  border-radius: var(--radius-md);
+}
+
+.feedback[data-state="error"] {
+  background: var(--color-wrong-bg);
+}
+
+.feedback[data-state="success"] {
+  background: var(--color-correct-bg);
+}
+
+.feedback__icon {
+  display: grid;
+  flex: none;
+  place-items: center;
+  width: 1.5rem;
+  height: 1.5rem;
+  margin-top: 0.125rem;
+  color: var(--color-ink);
+  background: var(--color-sky);
+  border-radius: 50%;
+}
+
+.feedback[data-state="error"] .feedback__icon {
+  background: var(--color-wrong);
+}
+
+.feedback[data-state="success"] .feedback__icon {
+  background: var(--color-correct);
+}
+
+.glyph {
+  display: none;
+  width: 1rem;
+  height: 1rem;
+}
+
+.feedback[data-state="idle"] .glyph--idle,
+.feedback[data-state="error"] .glyph--error,
+.feedback[data-state="success"] .glyph--success {
+  display: block;
+}
+
+.feedback__title:empty {
+  display: none;
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+}
+
+.btn--ghost {
+  color: var(--color-ink);
+}
+
+.btn--ghost .btn__face {
+  background: var(--color-sheet);
+  border: var(--rule) solid var(--color-hairline);
+  box-shadow: none;
+}
+
+.btn--ghost:hover .btn__face {
+  background: var(--color-paper);
 }
 
 /* ---------- footer ---------- */
@@ -366,6 +731,26 @@ p {
   body::before {
     mask-image: radial-gradient(ellipse 90% 50% at 50% 60%, black, transparent);
   }
+
+  .try {
+    padding-inline: var(--space-4);
+  }
+
+  .sheet {
+    padding: var(--space-6);
+  }
+
+  .puzzle {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  /* keep the graph in view while the sliders scroll underneath */
+  .puzzle__graph {
+    position: sticky;
+    top: 5.25rem;
+    z-index: 1;
+    box-shadow: 0 -0.75rem 0 var(--color-sheet); /* hides content scrolling past the gap under the nav */
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -379,7 +764,16 @@ p {
   }
 
   .btn__face,
-  .btn__arrow {
+  .btn__arrow,
+  .step::after,
+  .star__shape,
+  .star__halo,
+  .slider input::-webkit-slider-thumb,
+  .slider input::-moz-range-thumb {
     transition: none;
+  }
+
+  .puzzle__graph.is-shaking {
+    animation: none;
   }
 }
