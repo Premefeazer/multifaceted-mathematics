@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64">
+<g stroke="#071e40" stroke-width="2" stroke-linejoin="round">
+<polygon points="25.54,16.61 21.90,45.28 48.55,34.10" fill="#fb7b28"/>
+<polygon points="25.54,16.61 48.55,34.10 48.34,10.50" fill="#9dd7f8"/>
+<polygon points="25.54,16.61 48.34,10.50 21.55,7.10" fill="#ceeefe"/>
+<polygon points="25.54,16.61 21.55,7.10 5.22,28.60" fill="#ceeefe"/>
+<polygon points="25.54,16.61 5.22,28.60 21.90,45.28" fill="#ceeefe"/>
+<polygon points="48.34,10.50 48.55,34.10 58.78,35.40" fill="#3b99e2"/>
+<polygon points="48.55,34.10 21.90,45.28 42.45,56.90" fill="#3b99e2"/>
+<polygon points="21.90,45.28 5.22,28.60 15.66,53.50" fill="#6bbaf0"/>
+<polygon points="42.45,56.90 58.78,35.40 48.55,34.10" fill="#1c73c5"/>
+<polygon points="15.66,53.50 42.45,56.90 21.90,45.28" fill="#1c73c5"/>
+</g>
+</svg>

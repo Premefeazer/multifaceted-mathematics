@@ -1,0 +1,63 @@
+/* Design tokens. Change the look of the whole site here. Nothing else hard-codes a color, font or spacing value. */
+:root {
+  /* color */
+  --color-paper: oklch(96.5% 0.022 228);
+  --color-sheet: oklch(99.5% 0.004 230);
+  --color-sky: oklch(85% 0.09 232);
+  --color-sky-deep: oklch(62% 0.15 248);
+  --color-ink: oklch(24% 0.07 258);
+  --color-ink-hover: oklch(34% 0.09 258);
+  --color-ink-soft: oklch(46% 0.05 256);
+  --color-edge: oklch(30% 0.08 257);
+  --color-accent: oklch(72% 0.18 48);
+  --color-accent-deep: oklch(62% 0.19 40);
+  --color-spark: oklch(88% 0.16 95);
+  --color-correct: oklch(76% 0.15 160);
+  --color-wrong: oklch(64% 0.2 20);
+
+  /* graph-paper lines, hairlines, soft shadows */
+  --color-line-minor: oklch(62% 0.15 248 / 0.07);
+  --color-line-major: oklch(62% 0.15 248 / 0.14);
+  --color-hairline: oklch(24% 0.07 258 / 0.12);
+  --color-shadow: oklch(24% 0.07 258 / 0.14);
+  --color-shadow-strong: oklch(24% 0.07 258 / 0.32);
+
+  /* the 5 flat shades a lit icosahedron face can take, dark to light */
+  --facet-1: oklch(55% 0.15 252);
+  --facet-2: oklch(66% 0.14 246);
+  --facet-3: oklch(76% 0.11 240);
+  --facet-4: oklch(85% 0.075 234);
+  --facet-5: oklch(93% 0.04 230);
+
+  /* type */
+  --font-display: "Manrope", system-ui, sans-serif;
+  --font-body: "Atkinson Hyperlegible Next", system-ui, sans-serif;
+  --font-mono: "Atkinson Hyperlegible Mono", ui-monospace, monospace;
+  --text-sm: 0.875rem;
+  --text-base: 1.0625rem;
+  --text-lead: clamp(1.125rem, 1rem + 0.6vw, 1.3125rem);
+  --text-display: clamp(2.5rem, 1rem + 6.2vw, 4.75rem);
+
+  /* space (4 pt scale) */
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-6: 1.5rem;
+  --space-8: 2rem;
+  --space-12: 3rem;
+  --space-16: 4rem;
+  --space-24: 6rem;
+
+  /* shape */
+  --rule: 1px;
+  --radius-md: 0.875rem;
+  --radius-lg: 1.75rem;
+  --radius-pill: 999px;
+
+  /* motion */
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+  --dur-fast: 150ms;
+  --dur-draw: 1100ms;
+}
