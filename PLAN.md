@@ -291,7 +291,7 @@ Not covered, and worth doing before launch:
 6. Open `https://YOUR-USERNAME.github.io/multifaceted-mathematics/` and look at it on a real phone.
 
 **Afterwards (Claude can do these once the address is known):**
-- Add the canonical URL and Open Graph tags plus a 1200 × 630 share image.
+- ~~Add the canonical URL and Open Graph tags plus a 1200 × 630 share image.~~ Done: `assets/og.png` (rendered from the site's own tokens) and the tags in `index.html`. After deploying, check the preview with a share debugger (Facebook Sharing Debugger, LinkedIn Post Inspector); platforms cache the first result.
 - Re-run Lighthouse on the live address.
 - Optional: a custom domain (*Settings → Pages → Custom domain*, plus a DNS record at the domain registrar).
 
