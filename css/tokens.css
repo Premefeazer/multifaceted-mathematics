@@ -15,7 +15,6 @@
   --color-correct: oklch(76% 0.15 160);
   --color-wrong: oklch(64% 0.2 20);
   --color-correct-bg: oklch(95% 0.05 160);
-  --color-on-ink-soft: oklch(85% 0.03 230);
   --color-line-on-ink: oklch(99.5% 0.004 230 / 0.07);
 
   /* graph-paper lines, hairlines, soft shadows */

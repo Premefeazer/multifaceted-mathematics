@@ -5,13 +5,12 @@ const TOPIC_FACES = [0, 4, 7, 10, 12, 15, 17, 19]; // which of the 20 faces stan
 const names = ['Logic', 'Set Theory', 'Real Numbers', 'Functions & Relations', 'Number Theory', 'Combinatorics', 'Sequences & Series', 'Calculus Basics'];
 
 const readout = document.getElementById('ico-readout');
-readout.hidden = false;
-readout.textContent = 'Drag to turn. Tap a face.';
 
 mountPolyhedron(document.getElementById('ico'), {
   accentFace: TOPIC_FACES[0],
   onFace(face) {
     const k = TOPIC_FACES.indexOf(face);
+    readout.hidden = false;
     readout.textContent =
       k < 0 ? 'Still unexplored.' : `${names[k]} · ${k === 0 ? 'first up, coming soon' : 'coming soon'}`;
   },

@@ -78,11 +78,12 @@ Rules: headings are always upright, never italic. The hero headline is 7 words o
 2. **Graph-paper sky** — a very faint grid that fades out toward the edges, plus a thin straight line that draws itself under *every side* (plays once).
 3. **Refined buttons** — solid navy pills with a soft shadow, a small lift on hover, an arrow that nudges forward, a gentle press on click.
 4. **Topic cards** — one tile color per topic, drawn from the same ramp as the shape. The first two cards are larger, so the grid is not a wall of identical boxes.
+5. **Ticker** — a full-width strip right under the hero. The eight topic names with their symbols scroll slowly from right to left and pause on hover. Two identical lists make the loop seamless; the second is hidden from screen readers.
 
 Motion rules:
 - Animate only `transform` / `opacity`, with one shared easing set. One exception: the headline line draws itself once with `stroke-dashoffset`.
 - No fade-up on scroll for every section.
-- Respect `prefers-reduced-motion`: no auto-spin, no inertia, no self-drawing line.
+- Respect `prefers-reduced-motion`: no auto-spin, no inertia, no self-drawing line, and the ticker stops (the topics wrap and sit still).
 - The canvas stops rendering when scrolled off-screen.
 - Cards are not clickable yet, so they have no hover effect that would suggest they are.
 
@@ -91,12 +92,12 @@ Motion rules:
 - Talk to teenagers like a sharp, respectful mentor: direct, short, confident and precise. Never childish, never corporate.
 - Banned phrases: *Unlock your potential · Revolutionize · Seamless · Empower · Journey · Dive in · Master math effortlessly*
 - No invented numbers, reviews or logos. With no real users and no lessons yet, we claim nothing. Every unfinished thing says *Coming soon*.
+- No descriptive line under a heading or beside a button (decided 2026-10-20). The topics, the lesson screen and the roadmap explain themselves, and such lines read as filler. Do not add them back.
 
 | Where | Copy |
 |---|---|
 | Hero | **See math from every side.** |
-| Sub | Interactive math lessons for middle and high school, from logic and sets to calculus. Make a guess first, then see why. |
-| Reassurance | No account needed. First lessons are on the way. |
+| Sub, reassurance | Removed on 2026-10-20. The hero is the headline, one button and the shape. The page `<meta>` description keeps the one-line summary: *Interactive math lessons for middle and high school, from logic and sets to calculus. Make a guess first, then see why.* |
 | Topics heading | Math, from the ground up. |
 | Closing | Every problem has another side. |
 
@@ -147,14 +148,14 @@ Motion rules:
 
 | # | Section | Job | Status |
 |---|---|---|---|
-| 0 | Nav — floating capsule | Mark + wordmark and a **Topics** button. On mobile it is the same two items, no hamburger. | Built |
+| 0 | Nav — full-width top bar | Fixed bar across the whole top of the page with a hairline under it. Mark + wordmark on the left, a **Topics** button on the right (aligned to the page content width). On mobile it is the same two items, no hamburger. | Built (was a floating capsule until 2026-10-20) |
 | 1 | Hero | Headline left, draggable icosahedron right. On mobile the headline comes first. | Built |
 | 2 | Topics | 8 topic cards, two large then six small, each with a symbol tile, a thought-provoking question and a *Coming soon* tag. | Moved to `chapters.html` (2026-10-20) |
 | 3 | How a lesson works | Explain the method with a lesson screen built from real HTML (no fake phone frame) plus callouts: *One idea per screen* · *You try first, we explain after* · *Hints, not answers* · *Five minutes, tops*. | Built |
 | 4 | What's next | Honest roadmap that also explains why there is no login yet: *Now:* topic overview → *Next:* first lessons → *Later:* accounts, streaks, progress. | Built |
 | 5 | Closing + footer | Big line *Every problem has another side.* + button. A dark panel with *Every problem has another side.* and an **Explore topics** button. The footer is one © line, no links. | Built |
 
-**Since 2026-10-20 the diagram above is two pages.** The landing page keeps sections 0, 1, 3, 4 and 5, so it runs hero, how a lesson works, what's next, closing. Section 2 (the topic cards) is the whole body of `chapters.html`, under the same nav and footer; its nav button reads **Home**. On the landing page the nav button **Topics** and both **Explore topics** buttons link to `chapters.html`, and the skip link jumps to *How a lesson works*.
+**Since 2026-10-20 the diagram above is two pages.** The landing page keeps sections 0, 1, 3, 4 and 5, so it runs hero, ticker, how a lesson works, what's next, closing. Section 2 (the topic cards) is the whole body of `chapters.html`, under the same nav and footer; its nav button reads **Home**. On the landing page the nav button **Topics** and both **Explore topics** buttons link to `chapters.html`, and the skip link jumps to *How a lesson works*.
 
 ### 5.1 Topics (in learning order)
 
@@ -215,7 +216,7 @@ Multifaceted Mathematics/
 - [x] **Phase 3 — How a lesson works · What's next · Closing** (built, awaiting review)
 - [x] **Phase 4 — QA** (done, results in section 12). Not done: OG image, because there is no public URL yet.
 - [x] **Phase 5 — Deploy to GitHub Pages** (live at https://premefeazer.github.io/multifaceted-mathematics/; see sections 13 and 14).
-- [x] **Phase 6 — Topics page and type refinement (2026-10-20):** topic cards moved to `chapters.html`, headings switched to Newsreader, softer radii and shadows, landing copy edited to remove AI-sounding phrasing. Committed locally, not yet pushed or deployed.
+- [x] **Phase 6 — Topics page and type refinement (2026-10-20):** topic cards moved to `chapters.html`, headings switched to Newsreader, softer radii and shadows, landing copy edited to remove AI-sounding phrasing. Same day: full-width header, a topic ticker under the hero, and the taglines under headings and beside the hero button removed. Committed locally, not yet pushed or deployed.
 
 ## 8. Definition of done
 
