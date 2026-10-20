@@ -78,7 +78,7 @@ Rules: headings are always upright, never italic. The hero headline is 7 words o
 2. **Graph-paper sky** — a very faint grid that fades out toward the edges, plus a thin straight line that draws itself under *every side* (plays once).
 3. **Refined buttons** — solid navy pills with a soft shadow, a small lift on hover, an arrow that nudges forward, a gentle press on click.
 4. **Topic cards** — one tile color per topic, drawn from the same ramp as the shape. The first two cards are larger, so the grid is not a wall of identical boxes.
-5. **Ticker** — a full-width strip right under the hero. The eight topic names with their symbols scroll slowly from right to left and pause on hover. Two identical lists make the loop seamless; the second is hidden from screen readers.
+5. **Ticker** — a full-width strip right under the hero. The eight topic names with their symbols scroll slowly from left to right and pause on hover. Two identical lists make the loop seamless; the second is hidden from screen readers.
 
 Motion rules:
 - Animate only `transform` / `opacity`, with one shared easing set. One exception: the headline line draws itself once with `stroke-dashoffset`.
