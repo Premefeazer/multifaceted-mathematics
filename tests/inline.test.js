@@ -21,8 +21,10 @@ test('throws when a stylesheet link is missing, so a broken page is never deploy
   assert.throws(() => inlineCss('<head></head>', () => ''), /no <link/);
 });
 
-test('the real index.html inlines cleanly and keeps no local stylesheet link', () => {
-  const out = inlineCss(read('index.html'), read);
-  assert.ok(!/href="css\//.test(out));
-  assert.ok(out.includes(':root'));
-});
+for (const file of ['index.html', 'chapters.html']) {
+  test(`the real ${file} inlines cleanly and keeps no local stylesheet link`, () => {
+    const out = inlineCss(read(file), read);
+    assert.ok(!/href="css\//.test(out));
+    assert.ok(out.includes(':root'));
+  });
+}

@@ -33,6 +33,7 @@ jobs:
           mkdir _site
           cp -r js assets _site/
           node scripts/inline-css.mjs index.html _site/index.html
+          node scripts/inline-css.mjs chapters.html _site/chapters.html
 
       - uses: actions/configure-pages@v5
 

@@ -74,7 +74,7 @@ p {
   gap: var(--space-2);
   min-height: 3.25rem;
   padding: 0 var(--space-8);
-  font: 700 1rem / 1 var(--font-display);
+  font: 600 1rem / 1 var(--font-ui);
   background: var(--color-ink);
   border-radius: var(--radius-pill);
   box-shadow: 0 10px 20px -10px var(--color-shadow-strong);
@@ -186,12 +186,12 @@ p {
 }
 
 .brand__word b {
-  font: 800 1rem / 1.05 var(--font-display);
+  font: 800 1rem / 1.05 var(--font-ui);
   letter-spacing: -0.01em;
 }
 
 .brand__word span {
-  font: 500 0.75rem / 1.15 var(--font-display);
+  font: 500 0.75rem / 1.15 var(--font-ui);
   color: var(--color-ink-soft);
 }
 
@@ -210,9 +210,9 @@ p {
 
 .hero__title {
   font-size: var(--text-display);
-  font-weight: 800;
-  line-height: 1;
-  letter-spacing: -0.035em;
+  font-weight: 500;
+  line-height: 1.02;
+  letter-spacing: -0.025em;
 }
 
 .hero__title > span {
@@ -238,7 +238,7 @@ p {
 .curve path {
   fill: none;
   stroke: var(--color-accent);
-  stroke-width: 3.5;
+  stroke-width: 2;
   stroke-linecap: round;
   stroke-dasharray: 1;
   stroke-dashoffset: 1;
@@ -339,13 +339,14 @@ p {
   margin-bottom: var(--space-8);
 }
 
+.topics__head h1,
 .topics__head h2,
 .how h2,
 .next h2 {
-  font-size: clamp(2rem, 1.2rem + 3vw, 3rem);
-  font-weight: 800;
-  line-height: 1.05;
-  letter-spacing: -0.035em;
+  font-size: clamp(2.125rem, 1.2rem + 3.2vw, 3.25rem);
+  font-weight: 500;
+  line-height: 1.08;
+  letter-spacing: -0.02em;
 }
 
 .topics__head p,
@@ -414,12 +415,12 @@ p {
 
 .topic__name {
   margin: 0;
-  font: 800 1.25rem / 1.15 var(--font-display);
-  letter-spacing: -0.02em;
+  font: 500 1.375rem / 1.15 var(--font-display);
+  letter-spacing: -0.01em;
 }
 
 .topic--lead .topic__name {
-  font-size: 1.75rem;
+  font-size: 1.875rem;
 }
 
 .topic__question {
@@ -501,8 +502,8 @@ p {
 
 .principles h3 {
   margin: 0;
-  font: 800 1.125rem / 1.2 var(--font-display);
-  letter-spacing: -0.02em;
+  font: 500 1.25rem / 1.2 var(--font-display);
+  letter-spacing: -0.01em;
 }
 
 .principles p {
@@ -547,7 +548,7 @@ p {
 
 .lesson__topic {
   color: var(--color-ink-soft);
-  font: 700 var(--text-sm) / 1 var(--font-display);
+  font: 700 var(--text-sm) / 1 var(--font-ui);
 }
 
 .lesson__progress {
@@ -570,8 +571,8 @@ p {
 }
 
 .lesson__q {
-  font: 800 1.5rem / 1.25 var(--font-display);
-  letter-spacing: -0.02em;
+  font: 500 1.75rem / 1.2 var(--font-display);
+  letter-spacing: -0.01em;
 }
 
 .lesson__options {
@@ -698,8 +699,8 @@ p {
 
 .stage h3 {
   margin: 0;
-  font: 800 1.25rem / 1.2 var(--font-display);
-  letter-spacing: -0.02em;
+  font: 500 1.375rem / 1.2 var(--font-display);
+  letter-spacing: -0.01em;
 }
 
 .stage p {
@@ -741,10 +742,10 @@ p {
 
 .closing h2 {
   max-width: 14ch;
-  font-size: clamp(2.25rem, 1rem + 5vw, 4rem);
-  font-weight: 800;
-  line-height: 1.02;
-  letter-spacing: -0.035em;
+  font-size: clamp(2.5rem, 1rem + 5.2vw, 4.25rem);
+  font-weight: 500;
+  line-height: 1.04;
+  letter-spacing: -0.025em;
 }
 
 .closing .curve path {
@@ -819,6 +820,12 @@ p {
   .closing__panel {
     padding: var(--space-12) var(--space-6);
   }
+}
+
+/* the topics grid as its own page: clear the fixed nav */
+
+.topics--page {
+  padding-top: 7.5rem;
 }
 
 /* ---------- footer ---------- */

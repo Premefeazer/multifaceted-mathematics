@@ -1,7 +1,8 @@
 import { mountPolyhedron } from './polyhedron.js';
 
 const TOPIC_FACES = [0, 4, 7, 10, 12, 15, 17, 19]; // which of the 20 faces stands for each topic, in learning order
-const names = [...document.querySelectorAll('.topic__name')].map((el) => el.textContent); // the HTML is the single source
+// same order and names as the cards in chapters.html; update both when a topic changes
+const names = ['Logic', 'Set Theory', 'Real Numbers', 'Functions & Relations', 'Number Theory', 'Combinatorics', 'Sequences & Series', 'Calculus Basics'];
 
 const readout = document.getElementById('ico-readout');
 readout.hidden = false;

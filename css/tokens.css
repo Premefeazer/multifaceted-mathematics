@@ -33,14 +33,15 @@
   --facet-5: oklch(93% 0.04 230);
 
   /* type */
-  --font-display: "Manrope", system-ui, sans-serif;
+  --font-display: "Newsreader", Georgia, "Times New Roman", serif;
+  --font-ui: "Manrope", system-ui, sans-serif;
   --font-body: "Atkinson Hyperlegible Next", system-ui, sans-serif;
   --font-mono: "Atkinson Hyperlegible Mono", ui-monospace, monospace;
   --font-math: "Cambria Math", "STIX Two Math", "Noto Sans Math", "Segoe UI Symbol", serif;
   --text-sm: 0.875rem;
   --text-base: 1.0625rem;
   --text-lead: clamp(1.125rem, 1rem + 0.6vw, 1.3125rem);
-  --text-display: clamp(2.5rem, 1rem + 6.2vw, 4.75rem);
+  --text-display: clamp(2.75rem, 1rem + 6.6vw, 5.25rem);
 
   /* space (4 pt scale) */
   --space-1: 0.25rem;
@@ -55,8 +56,8 @@
 
   /* shape */
   --rule: 1px;
-  --radius-md: 0.875rem;
-  --radius-lg: 1.75rem;
+  --radius-md: 0.75rem;
+  --radius-lg: 1.25rem;
   --radius-pill: 999px;
 
   /* motion */
