@@ -326,3 +326,14 @@ The first live Lighthouse run (mobile) scored performance 85–88 with a first p
 | After, run 2 | 100 | 100 | 100 | 100 | 0.9 s | 1.7 s | 0 |
 
 Also confirmed on the live address: the page has two inlined `<style>` blocks and no local stylesheet link, `/css/styles.css` and `/PLAN.md` return 404 (only the four site items are published), no console errors, and `og.png` loads. Lighthouse scores vary a little between runs, so treat 99–100 as the range.
+
+## 15. Live check after the 2026-10-20 changes
+
+Pushed `1cac315` and the deploy was live within about 30 seconds. Lighthouse on the live URLs (mobile, one run each):
+
+| Page | Performance | Accessibility | Best practices | SEO | First paint | Largest paint | CLS |
+|---|---|---|---|---|---|---|---|
+| `index.html` | 98 | 100 | 100 | 100 | 1.7 s | 2.2 s | 0.011 |
+| `chapters.html` | 100 | 100 | 100 | 100 | 1.2 s | 1.2 s | 0.036 |
+
+The small layout shift (previously 0) is the Newsreader web font swapping in over Georgia. Both pages inline their CSS; `/PLAN.md` still returns 404. Still not covered: a real screen reader, Safari and Firefox, real phones, and share previews in chat apps.
