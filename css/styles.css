@@ -232,8 +232,7 @@ main:focus {
   display: block;
 }
 
-.hero__title .every,
-.closing .every {
+.hero__title .every {
   position: relative;
   display: inline-block;
 }
@@ -336,10 +335,13 @@ main:focus {
 
 /* ---------- ticker: the eight topics, scrolling ---------- */
 
+/* sticky inside .intro: pinned to the viewport bottom until the hero section scrolls away */
 .ticker {
-  position: relative;
+  position: sticky;
+  bottom: 0;
+  z-index: 2;
   overflow: hidden;
-  padding-block: var(--space-4);
+  padding: var(--space-4);
   background: var(--color-sheet);
   border-block: var(--rule) solid var(--color-hairline);
 }
@@ -350,52 +352,8 @@ main:focus {
   animation: ticker 45s linear infinite;
 }
 
-.ticker:hover .ticker__lane,
-.ticker.is-paused .ticker__lane {
+.ticker:hover .ticker__lane {
   animation-play-state: paused;
-}
-
-.ticker__pause {
-  position: absolute;
-  top: 50%;
-  right: var(--space-4);
-  z-index: 1;
-  display: grid;
-  place-items: center;
-  width: 2.75rem;
-  height: 2.75rem;
-  padding: 0;
-  color: var(--color-ink);
-  cursor: pointer;
-  background: var(--color-sheet);
-  border: var(--rule) solid var(--color-hairline);
-  border-radius: var(--radius-pill);
-  box-shadow: 0 0 0 var(--space-3) var(--color-sheet);
-  transform: translateY(-50%);
-  -webkit-tap-highlight-color: transparent;
-}
-
-.ticker__pause:hover {
-  border-color: var(--color-sky-deep);
-}
-
-.ticker__pause:focus-visible {
-  outline: 3px solid var(--color-sky-deep);
-  outline-offset: 3px;
-}
-
-.ticker__pause svg {
-  width: 1rem;
-  height: 1rem;
-}
-
-.ticker__pause .play,
-.ticker.is-paused .ticker__pause .pause {
-  display: none;
-}
-
-.ticker.is-paused .ticker__pause .play {
-  display: block;
 }
 
 .ticker__track {
@@ -446,8 +404,7 @@ main:focus {
 /* ---------- topics ---------- */
 
 .topics,
-.how,
-.closing {
+.how {
   max-width: 75rem;
   margin-inline: auto;
   padding: var(--space-12) var(--space-6) var(--space-16);
@@ -565,8 +522,7 @@ main:focus {
 
 @media (max-width: 40rem) {
   .topics,
-  .how,
-  .closing {
+  .how {
     padding-inline: var(--space-4);
   }
 
@@ -810,67 +766,6 @@ main:focus {
   white-space: nowrap;
 }
 
-/* ---------- closing ---------- */
-
-.closing {
-  padding-top: 0;
-}
-
-.closing__panel {
-  position: relative;
-  isolation: isolate;
-  display: grid;
-  justify-items: start;
-  gap: var(--space-6);
-  padding: var(--space-24) var(--space-12);
-  overflow: hidden;
-  color: var(--color-sheet);
-  background: var(--color-ink);
-  border-radius: var(--radius-lg);
-}
-
-.closing__panel::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  z-index: -1;
-  background-image:
-    linear-gradient(var(--color-line-on-ink) 1px, transparent 1px),
-    linear-gradient(90deg, var(--color-line-on-ink) 1px, transparent 1px);
-  background-size: 24px 24px;
-  mask-image: radial-gradient(ellipse 70% 100% at 100% 100%, black, transparent);
-}
-
-.closing h2 {
-  max-width: 14ch;
-  font-size: clamp(2.5rem, 1rem + 5.2vw, 4.25rem);
-  font-weight: 500;
-  line-height: 1.04;
-  letter-spacing: -0.025em;
-}
-
-.closing .curve path {
-  stroke-dashoffset: 0;
-  animation: none;
-}
-
-.btn--light {
-  color: var(--color-ink);
-}
-
-.btn--light .btn__face {
-  background: var(--color-sheet);
-  box-shadow: none;
-}
-
-.btn--light:hover .btn__face {
-  background: var(--color-paper);
-}
-
-.btn--light:focus-visible {
-  outline-color: var(--color-sheet);
-}
-
 @media (max-width: 52rem) {
   .how {
     grid-template-columns: minmax(0, 1fr);
@@ -889,9 +784,6 @@ main:focus {
     padding: var(--space-6);
   }
 
-  .closing__panel {
-    padding: var(--space-12) var(--space-6);
-  }
 }
 
 /* the topics grid as its own page: clear the fixed nav */
@@ -972,10 +864,6 @@ main:focus {
   .option,
   .ticker__track li {
     transition: none;
-  }
-
-  .ticker__pause {
-    display: none;
   }
 
   .ticker__track[aria-hidden] {

@@ -1,0 +1,17 @@
+{
+  "detector": {
+    "ignoreRules": [],
+    "ignoreFiles": [],
+    "ignoreValues": [
+      {
+        "rule": "marquee",
+        "value": "*",
+        "files": [
+          "index.html"
+        ],
+        "createdAt": "2026-10-20T10:45:06.111Z",
+        "reason": "user confirmed: the topics ticker must keep scrolling"
+      }
+    ]
+  }
+}

@@ -79,7 +79,7 @@ Rules: headings are always upright, never italic. The hero headline is 7 words o
 3. **Refined buttons** — solid navy pills with a soft shadow, a small lift on hover, an arrow that nudges forward, a gentle press on click.
 4. **Topic cards** — one tile color per topic, drawn from the same ramp as the shape. The first two cards are larger, so the grid is not a wall of identical boxes.
    Since 2026-10-20 the eight topic faces carry their topic symbol (upright, fading as the face turns away). Only those faces can be picked: a pick outlines the face, highlights that topic in the ticker, and turns the readout under the shape into a link to the topic's card on `chapters.html` (the card gets a focus outline via `:target`). Tapping anywhere else clears the pick.
-5. **Ticker** — a full-width strip right under the hero. The eight topic names with their symbols scroll slowly from left to right, pause on hover, and have a pause button at the strip's right end for touch and keyboard. Two identical lists make the loop seamless; the second is hidden from screen readers.
+5. **Ticker** — a full-width strip right under the hero. The eight topic names with their symbols scroll slowly from left to right, pause on hover. Two identical lists make the loop seamless; the second is hidden from screen readers.
 
 Motion rules:
 - Animate only `transform` / `opacity`, with one shared easing set. One exception: the headline line draws itself once with `stroke-dashoffset`.
