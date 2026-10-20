@@ -48,12 +48,16 @@
 
       <div class="hero__stage">
         <div class="stage__ring" aria-hidden="true"></div>
-        <canvas id="ico" tabindex="0" role="img" aria-label="A 20-faced shape, an icosahedron. Drag it or use the arrow keys to turn it. Tap a face to see which branch of math it stands for."></canvas>
+        <canvas id="ico" tabindex="0" role="img" aria-label="A 20-faced shape, an icosahedron. Drag it or use the arrow keys to turn it. Tap a topic face, or press Enter to step through the eight topic faces and Escape to clear."></canvas>
         <p class="stage__readout" id="ico-readout" aria-live="polite" hidden></p>
       </div>
     </section>
 
     <div class="ticker" role="group" aria-label="The eight topics">
+      <button class="ticker__pause" type="button" aria-pressed="false" aria-label="Pause the scrolling topics">
+        <svg class="pause" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true" focusable="false"><rect x="3.5" y="2.5" width="3" height="11" rx="1"/><rect x="9.5" y="2.5" width="3" height="11" rx="1"/></svg>
+        <svg class="play" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true" focusable="false"><path d="M4.5 2.8v10.4a.6.6 0 0 0 .9.5l8.2-5.2a.6.6 0 0 0 0-1L5.4 2.3a.6.6 0 0 0-.9.5Z"/></svg>
+      </button>
       <div class="ticker__lane">
         <ul class="ticker__track" role="list">
           <li data-topic="0"><span class="ticker__sym" aria-hidden="true">⇒</span>Logic</li>

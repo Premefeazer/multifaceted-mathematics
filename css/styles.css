@@ -49,6 +49,13 @@ h2 {
 
 p {
   margin: 0;
+  text-wrap: pretty;
+}
+
+h1,
+h2,
+h3 {
+  text-wrap: balance;
 }
 
 /* ---------- buttons: solid pill, small lift on hover, press on click ---------- */
@@ -326,7 +333,9 @@ p {
 /* ---------- ticker: the eight topics, scrolling ---------- */
 
 .ticker {
+  position: relative;
   overflow: hidden;
+  padding-block: var(--space-4);
   background: var(--color-sheet);
   border-block: var(--rule) solid var(--color-hairline);
 }
@@ -337,8 +346,52 @@ p {
   animation: ticker 45s linear infinite;
 }
 
-.ticker:hover .ticker__lane {
+.ticker:hover .ticker__lane,
+.ticker.is-paused .ticker__lane {
   animation-play-state: paused;
+}
+
+.ticker__pause {
+  position: absolute;
+  top: 50%;
+  right: var(--space-4);
+  z-index: 1;
+  display: grid;
+  place-items: center;
+  width: 2.75rem;
+  height: 2.75rem;
+  padding: 0;
+  color: var(--color-ink);
+  cursor: pointer;
+  background: var(--color-sheet);
+  border: var(--rule) solid var(--color-hairline);
+  border-radius: var(--radius-pill);
+  box-shadow: 0 0 0 var(--space-3) var(--color-sheet);
+  transform: translateY(-50%);
+  -webkit-tap-highlight-color: transparent;
+}
+
+.ticker__pause:hover {
+  border-color: var(--color-sky-deep);
+}
+
+.ticker__pause:focus-visible {
+  outline: 3px solid var(--color-sky-deep);
+  outline-offset: 3px;
+}
+
+.ticker__pause svg {
+  width: 1rem;
+  height: 1rem;
+}
+
+.ticker__pause .play,
+.ticker__pause[aria-pressed="true"] .pause {
+  display: none;
+}
+
+.ticker__pause[aria-pressed="true"] .play {
+  display: block;
 }
 
 .ticker__track {
@@ -348,7 +401,7 @@ p {
   justify-content: space-around;
   min-width: 100vw;
   margin: 0;
-  padding: var(--space-4) var(--space-6);
+  padding: 0 var(--space-6);
   list-style: none;
 }
 
@@ -989,6 +1042,10 @@ p {
   .option,
   .ticker__track li {
     transition: none;
+  }
+
+  .ticker__pause {
+    display: none;
   }
 
   .ticker__track[aria-hidden] {

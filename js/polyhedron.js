@@ -19,7 +19,7 @@ const inTriangle = (p, [a, b, c]) => {
 
 // `accentFace` is drawn orange. `labels` maps a face index to the symbol printed on it; only those faces can be picked.
 // `onFace(i)` fires when a labeled face is tapped, and with -1 when the tap lands anywhere else.
-// Keyboard: arrow keys turn the shape.
+// Keyboard: arrow keys turn the shape, Enter or Space steps through the topic faces, Escape clears the pick.
 export function mountPolyhedron(canvas, { accentFace, onFace, labels = {} }) {
   const ctx = canvas.getContext('2d');
   const reduced = matchMedia('(prefers-reduced-motion: reduce)');
@@ -178,7 +178,25 @@ export function mountPolyhedron(canvas, { accentFace, onFace, labels = {} }) {
   canvas.addEventListener('pointerup', release);
   canvas.addEventListener('pointercancel', release);
 
+  const topicFaces = Object.keys(labels).map(Number).sort((a, b) => a - b);
+
   canvas.addEventListener('keydown', (e) => {
+    if ((e.key === 'Enter' || e.key === ' ') && topicFaces.length) {
+      e.preventDefault();
+      selected = topicFaces[(topicFaces.indexOf(selected) + 1) % topicFaces.length];
+      R = rotationBetween(NORMALS[selected], normalize([0.3, 0.25, 0.92])); // turn the picked face toward the viewer
+      vx = vy = 0;
+      lastInput = performance.now();
+      onFace(selected);
+      schedule();
+      return;
+    }
+    if (e.key === 'Escape' && selected !== -1) {
+      selected = -1;
+      onFace(-1);
+      schedule();
+      return;
+    }
     const dir = { ArrowLeft: [0, -1], ArrowRight: [0, 1], ArrowUp: [-1, 0], ArrowDown: [1, 0] }[e.key];
     if (!dir) return;
     e.preventDefault();

@@ -37,3 +37,13 @@ mountPolyhedron(document.getElementById('ico'), {
   labels: Object.fromEntries(TOPICS.map((t) => [t.face, t.symbol])),
   onFace: (face) => show(TOPICS.findIndex((t) => t.face === face)),
 });
+
+// WCAG 2.2.2: the ticker can be stopped without a mouse
+const ticker = document.querySelector('.ticker');
+const pause = ticker.querySelector('.ticker__pause');
+pause.addEventListener('click', () => {
+  const paused = pause.getAttribute('aria-pressed') !== 'true';
+  pause.setAttribute('aria-pressed', paused);
+  pause.setAttribute('aria-label', paused ? 'Resume the scrolling topics' : 'Pause the scrolling topics');
+  ticker.classList.toggle('is-paused', paused);
+});
