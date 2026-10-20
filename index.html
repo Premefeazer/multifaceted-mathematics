@@ -56,31 +56,59 @@
     <div class="ticker" role="group" aria-label="The eight topics">
       <div class="ticker__lane">
         <ul class="ticker__track" role="list">
-          <li><span class="ticker__sym" aria-hidden="true">⇒</span>Logic</li>
-          <li><span class="ticker__sym" aria-hidden="true">∈</span>Set Theory</li>
-          <li><span class="ticker__sym" aria-hidden="true">ℝ</span>Real Numbers</li>
-          <li><span class="ticker__sym" aria-hidden="true">f(x)</span>Functions &amp; Relations</li>
-          <li><span class="ticker__sym" aria-hidden="true">≡</span>Number Theory</li>
-          <li><span class="ticker__sym" aria-hidden="true">!</span>Combinatorics</li>
-          <li><span class="ticker__sym" aria-hidden="true">Σ</span>Sequences &amp; Series</li>
-          <li><span class="ticker__sym" aria-hidden="true">∫</span>Calculus Basics</li>
+          <li data-topic="0"><span class="ticker__sym" aria-hidden="true">⇒</span>Logic</li>
+          <li data-topic="1"><span class="ticker__sym" aria-hidden="true">∈</span>Set Theory</li>
+          <li data-topic="2"><span class="ticker__sym" aria-hidden="true">ℝ</span>Real Numbers</li>
+          <li data-topic="3"><span class="ticker__sym" aria-hidden="true">f(x)</span>Functions &amp; Relations</li>
+          <li data-topic="4"><span class="ticker__sym" aria-hidden="true">≡</span>Number Theory</li>
+          <li data-topic="5"><span class="ticker__sym" aria-hidden="true">!</span>Combinatorics</li>
+          <li data-topic="6"><span class="ticker__sym" aria-hidden="true">Σ</span>Sequences &amp; Series</li>
+          <li data-topic="7"><span class="ticker__sym" aria-hidden="true">∫</span>Calculus Basics</li>
         </ul>
         <ul class="ticker__track" role="list" aria-hidden="true">
-          <li><span class="ticker__sym" aria-hidden="true">⇒</span>Logic</li>
-          <li><span class="ticker__sym" aria-hidden="true">∈</span>Set Theory</li>
-          <li><span class="ticker__sym" aria-hidden="true">ℝ</span>Real Numbers</li>
-          <li><span class="ticker__sym" aria-hidden="true">f(x)</span>Functions &amp; Relations</li>
-          <li><span class="ticker__sym" aria-hidden="true">≡</span>Number Theory</li>
-          <li><span class="ticker__sym" aria-hidden="true">!</span>Combinatorics</li>
-          <li><span class="ticker__sym" aria-hidden="true">Σ</span>Sequences &amp; Series</li>
-          <li><span class="ticker__sym" aria-hidden="true">∫</span>Calculus Basics</li>
+          <li data-topic="0"><span class="ticker__sym" aria-hidden="true">⇒</span>Logic</li>
+          <li data-topic="1"><span class="ticker__sym" aria-hidden="true">∈</span>Set Theory</li>
+          <li data-topic="2"><span class="ticker__sym" aria-hidden="true">ℝ</span>Real Numbers</li>
+          <li data-topic="3"><span class="ticker__sym" aria-hidden="true">f(x)</span>Functions &amp; Relations</li>
+          <li data-topic="4"><span class="ticker__sym" aria-hidden="true">≡</span>Number Theory</li>
+          <li data-topic="5"><span class="ticker__sym" aria-hidden="true">!</span>Combinatorics</li>
+          <li data-topic="6"><span class="ticker__sym" aria-hidden="true">Σ</span>Sequences &amp; Series</li>
+          <li data-topic="7"><span class="ticker__sym" aria-hidden="true">∫</span>Calculus Basics</li>
         </ul>
       </div>
     </div>
 
     <section class="how" id="how" aria-labelledby="how-title">
-      <div class="how__text">
+      <div class="how__head">
         <h2 id="how-title">How a lesson works.</h2>
+      </div>
+
+      <figure class="how__figure lesson">
+        <div class="lesson__stack">
+          <div class="lesson__card">
+            <div class="lesson__top">
+              <span class="lesson__topic">Logic</span>
+              <span class="lesson__progress" role="img" aria-label="Question 2 of 5"><span class="is-done"></span><span class="is-done"></span><span></span><span></span><span></span></span>
+            </div>
+            <p class="lesson__q">If it rains, the street is wet. The street is wet. Did it rain?</p>
+            <ul class="lesson__options" role="list">
+              <li><button class="option" type="button" aria-pressed="false" data-note="0">Yes, it must have rained<span class="option__icon" aria-hidden="true" hidden><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="m7 7 10 10M17 7 7 17"/></svg></span></button></li>
+              <li><button class="option" type="button" aria-pressed="false" data-note="1" data-correct>Not necessarily<span class="option__icon" aria-hidden="true" hidden><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="m6.5 12.5 3.5 3.5 7.5-8"/></svg></span></button></li>
+              <li><button class="option" type="button" aria-pressed="false" data-note="2">No, it can’t have rained<span class="option__icon" aria-hidden="true" hidden><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="m7 7 10 10M17 7 7 17"/></svg></span></button></li>
+            </ul>
+            <div class="lesson__explain" aria-hidden="true">
+              <p class="explain is-on">Pick an answer to see why.</p>
+              <p class="explain"><strong>Not quite.</strong> That turns the rule around. Rain makes the street wet, but a wet street can come from other things, like a street cleaner.</p>
+              <p class="explain"><strong>Right.</strong> Rain makes the street wet, but so does a street cleaner. A wet street doesn’t prove it rained.</p>
+              <p class="explain"><strong>Not quite.</strong> Rain could still be the cause. A wet street fits rain, it just doesn’t prove it.</p>
+            </div>
+            <p class="sr-only" role="status" id="lesson-status"></p>
+          </div>
+        </div>
+        <figcaption>An example lesson screen. Lessons are coming soon.</figcaption>
+      </figure>
+
+      <div class="how__text">
         <ul class="principles" role="list">
           <li>
             <h3>One idea per screen</h3>
@@ -100,25 +128,6 @@
           </li>
         </ul>
       </div>
-
-      <figure class="how__figure lesson">
-        <div class="lesson__stack">
-          <div class="lesson__card">
-            <div class="lesson__top">
-              <span class="lesson__topic">Logic</span>
-              <span class="lesson__progress" role="img" aria-label="Question 2 of 5"><span class="is-done"></span><span class="is-done"></span><span></span><span></span><span></span></span>
-            </div>
-            <p class="lesson__q">If it rains, the street is wet. The street is wet. Did it rain?</p>
-            <ul class="lesson__options" role="list">
-              <li class="option">Yes, it must have rained</li>
-              <li class="option is-picked">Not necessarily<span class="option__icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="m6.5 12.5 3.5 3.5 7.5-8"/></svg></span><span class="sr-only">(selected, correct)</span></li>
-              <li class="option">No, it can’t have rained</li>
-            </ul>
-            <p class="lesson__explain"><strong>Right.</strong> Rain makes the street wet, but so does a street cleaner. A wet street doesn’t prove it rained.</p>
-          </div>
-        </div>
-        <figcaption>An example lesson screen. Lessons are coming soon.</figcaption>
-      </figure>
     </section>
 
     <section class="next" id="next" aria-labelledby="next-title">

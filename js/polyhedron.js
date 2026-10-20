@@ -17,9 +17,10 @@ const inTriangle = (p, [a, b, c]) => {
   return !((d1 < 0 || d2 < 0 || d3 < 0) && (d1 > 0 || d2 > 0 || d3 > 0));
 };
 
-// `accentFace` is drawn orange. `onFace(i)` fires when a face is tapped.
-// Keyboard: arrow keys turn the shape (the Facets section covers keyboard access to the topics).
-export function mountPolyhedron(canvas, { accentFace, onFace }) {
+// `accentFace` is drawn orange. `labels` maps a face index to the symbol printed on it; only those faces can be picked.
+// `onFace(i)` fires when a labeled face is tapped, and with -1 when the tap lands anywhere else.
+// Keyboard: arrow keys turn the shape.
+export function mountPolyhedron(canvas, { accentFace, onFace, labels = {} }) {
   const ctx = canvas.getContext('2d');
   const reduced = matchMedia('(prefers-reduced-motion: reduce)');
   const color = {
@@ -27,6 +28,8 @@ export function mountPolyhedron(canvas, { accentFace, onFace }) {
     accent: token('--color-accent'),
     accentDeep: token('--color-accent-deep'),
     edge: token('--color-edge'),
+    ink: token('--color-ink'),
+    font: token('--font-math'),
     sheet: token('--color-sheet'),
     shadow: token('--color-shadow'),
   };
@@ -60,21 +63,49 @@ export function mountPolyhedron(canvas, { accentFace, onFace }) {
     ctx.lineWidth = 1.75;
     ctx.strokeStyle = color.edge;
     hit = [];
+    const faces = [];
     FACES.forEach((f, i) => {
       const n = apply(R, NORMALS[i]);
       const c = [0, 1, 2].map((a) => (rv[f[0]][a] + rv[f[1]][a] + rv[f[2]][a]) / 3);
       if (dot(n, [-c[0], -c[1], EYE - c[2]]) <= 0) return; // facing away: convex, so skipping is enough
 
+      const view = [-c[0], -c[1], EYE - c[2]];
+      const facing = dot(n, view) / Math.hypot(...view);
       const lit = dot(n, LIGHT);
       const shade = color.shades[Math.max(0, Math.min(4, Math.floor(((lit + 0.3) / 1.3) * 5)))];
-      ctx.fillStyle = i === selected ? color.sheet : i === accentFace ? (lit > 0.1 ? color.accent : color.accentDeep) : shade;
+      ctx.fillStyle = i === accentFace ? (lit > 0.1 ? color.accent : color.accentDeep) : shade;
       ctx.beginPath();
       f.forEach((j, k) => (k ? ctx.lineTo(sp[j].x, sp[j].y) : ctx.moveTo(sp[j].x, sp[j].y)));
       ctx.closePath();
       ctx.fill();
       ctx.stroke();
-      hit.push([i, f.map((j) => sp[j])]);
+      const tri = f.map((j) => sp[j]);
+      hit.push([i, tri]);
+      faces.push({ i, tri, facing });
     });
+
+    // symbols stay upright and fade as their face turns away
+    ctx.textAlign = 'center';
+    ctx.textBaseline = 'middle';
+    ctx.fillStyle = color.ink;
+    faces.forEach(({ i, tri, facing }) => {
+      const alpha = Math.min(1, (facing - 0.3) / 0.4);
+      if (labels[i] === undefined || alpha <= 0) return;
+      ctx.globalAlpha = alpha;
+      ctx.font = `700 ${r * 0.2 * (0.6 + 0.4 * facing)}px ${color.font}`;
+      ctx.fillText(labels[i], (tri[0].x + tri[1].x + tri[2].x) / 3, (tri[0].y + tri[1].y + tri[2].y) / 3);
+    });
+    ctx.globalAlpha = 1;
+
+    const pick = faces.find((f) => f.i === selected);
+    if (pick) {
+      ctx.lineWidth = 3.5;
+      ctx.strokeStyle = color.ink;
+      ctx.beginPath();
+      pick.tri.forEach((q, k) => (k ? ctx.lineTo(q.x, q.y) : ctx.moveTo(q.x, q.y)));
+      ctx.closePath();
+      ctx.stroke();
+    }
   }
 
   const needsFrame = () =>
@@ -109,7 +140,13 @@ export function mountPolyhedron(canvas, { accentFace, onFace }) {
   });
 
   canvas.addEventListener('pointermove', (e) => {
-    if (!drag || e.pointerId !== drag.id) return;
+    if (!drag) {
+      const rect = canvas.getBoundingClientRect();
+      const p = { x: e.clientX - rect.left, y: e.clientY - rect.top };
+      canvas.style.cursor = hit.some(([i, tri]) => labels[i] !== undefined && inTriangle(p, tri)) ? 'pointer' : '';
+      return;
+    }
+    if (e.pointerId !== drag.id) return;
     const now = performance.now();
     const dt = Math.max(now - drag.t, 8) / 1000;
     const ay = (e.clientX - drag.x) / radius();
@@ -130,10 +167,8 @@ export function mountPolyhedron(canvas, { accentFace, onFace }) {
       const rect = canvas.getBoundingClientRect();
       const p = { x: e.clientX - rect.left, y: e.clientY - rect.top };
       const found = hit.find(([, tri]) => inTriangle(p, tri));
-      if (found) {
-        selected = found[0];
-        onFace(selected);
-      }
+      selected = found && labels[found[0]] !== undefined ? found[0] : -1;
+      onFace(selected);
     }
     if (reduced.matches || now - drag.t > 80) vx = vy = 0; // no inertia if held still or reduced motion
     drag = null;

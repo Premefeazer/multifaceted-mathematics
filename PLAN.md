@@ -78,6 +78,7 @@ Rules: headings are always upright, never italic. The hero headline is 7 words o
 2. **Graph-paper sky** — a very faint grid that fades out toward the edges, plus a thin straight line that draws itself under *every side* (plays once).
 3. **Refined buttons** — solid navy pills with a soft shadow, a small lift on hover, an arrow that nudges forward, a gentle press on click.
 4. **Topic cards** — one tile color per topic, drawn from the same ramp as the shape. The first two cards are larger, so the grid is not a wall of identical boxes.
+   Since 2026-10-20 the eight topic faces carry their topic symbol (upright, fading as the face turns away). Only those faces can be picked: a pick outlines the face, highlights that topic in the ticker, and turns the readout under the shape into a link to the topic's card on `chapters.html` (the card gets a focus outline via `:target`). Tapping anywhere else clears the pick.
 5. **Ticker** — a full-width strip right under the hero. The eight topic names with their symbols scroll slowly from left to right and pause on hover. Two identical lists make the loop seamless; the second is hidden from screen readers.
 
 Motion rules:
@@ -170,7 +171,7 @@ Motion rules:
 | 7 | Sequences & Series | Σ | Can infinitely many steps add up to a finite distance? |
 | 8 | Calculus Basics | ∫ | How fast is a falling ball at exactly one second? |
 
-The cards live in `chapters.html`. The hero shape on the landing page no longer reads them from the DOM, so `js/main.js` keeps its own list of names in the same order. Adding or renaming a topic is two edits: the card and that list.
+The cards live in `chapters.html`. The hero shape on the landing page no longer reads them from the DOM, so `js/main.js` keeps its own `TOPICS` list (name, symbol, card id, face) in the same order. Adding or renaming a topic is three edits: the card (with its `id`), the matching ticker item (`data-topic`) and that list.
 
 ### 5.2 Parked: the puzzle
 
@@ -188,7 +189,8 @@ Multifaceted Mathematics/
 ├── js/
 │   ├── geometry.js      pure icosahedron math (no DOM, unit-tested)
 │   ├── polyhedron.js    canvas 2D: shading, drag, inertia, tap-to-pick
-│   └── main.js          wires the hero shape to the topic names
+│   ├── main.js          topic list; wires the hero shape to the ticker and the readout link
+│   └── lesson.js        the playable example lesson card
 ├── scripts/
 │   └── inline-css.mjs   deploy-time step: inlines the two stylesheets into a page
 ├── tests/
@@ -216,7 +218,8 @@ Multifaceted Mathematics/
 - [x] **Phase 3 — How a lesson works · What's next · Closing** (built, awaiting review)
 - [x] **Phase 4 — QA** (done, results in section 12). Not done: OG image, because there is no public URL yet.
 - [x] **Phase 5 — Deploy to GitHub Pages** (live at https://premefeazer.github.io/multifaceted-mathematics/; see sections 13 and 14).
-- [x] **Phase 6 — Topics page and type refinement (2026-10-20):** topic cards moved to `chapters.html`, headings switched to Newsreader, softer radii and shadows, landing copy edited to remove AI-sounding phrasing. Same day: full-width header, a topic ticker under the hero, and the taglines under headings and beside the hero button removed. Committed locally, not yet pushed or deployed.
+- [x] **Phase 6 — Topics page and type refinement (2026-10-20):** topic cards moved to `chapters.html`, headings switched to Newsreader, softer radii and shadows, landing copy edited to remove AI-sounding phrasing. Same day: full-width header, a topic ticker under the hero, and the taglines under headings and beside the hero button removed.
+- [x] **Phase 7 — Playable first (2026-10-20, from the first critique):** the example lesson card is now interactive (pick any answer, each has its own explanation; the card keeps one height) and sits right under the ticker, with the heading above it; the topic symbols are on the solid's faces and picking one links to its topic. Still open from the critique: pausing the ticker by touch and keyboard, keyboard face selection, the `chapters.html` heading skip, one-word line breaks, trimming the roadmap, one CTA name, an About line in the footer. Committed locally, not yet pushed or deployed.
 
 ## 8. Definition of done
 

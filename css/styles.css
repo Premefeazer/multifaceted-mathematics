@@ -305,6 +305,24 @@ p {
   box-shadow: 0 8px 18px -12px var(--color-shadow-strong);
 }
 
+.stage__readout:empty,
+.stage__readout[hidden] {
+  display: block;
+  visibility: hidden;
+  min-height: 2.5rem;
+}
+
+.stage__readout a {
+  color: inherit;
+  text-underline-offset: 0.25em;
+}
+
+.stage__readout a:focus-visible {
+  outline: 3px solid var(--color-sky-deep);
+  outline-offset: 3px;
+  border-radius: var(--radius-md);
+}
+
 /* ---------- ticker: the eight topics, scrolling ---------- */
 
 .ticker {
@@ -341,6 +359,16 @@ p {
   font: 500 1.375rem / 1 var(--font-display);
   letter-spacing: -0.01em;
   white-space: nowrap;
+}
+
+.ticker__track li {
+  border-radius: var(--radius-md);
+  transition: background-color var(--dur-fast) var(--ease-out), box-shadow var(--dur-fast) var(--ease-out);
+}
+
+.ticker__track li.is-active {
+  background: var(--color-paper);
+  box-shadow: 0 0 0 0.5rem var(--color-paper), 0 0 0 calc(0.5rem + 1px) var(--color-sky-deep);
 }
 
 .ticker__sym {
@@ -409,6 +437,11 @@ p {
   grid-column: span 3;
   gap: var(--space-4);
   padding: var(--space-8);
+}
+
+.topic:target {
+  outline: 3px solid var(--color-sky-deep);
+  outline-offset: 3px;
 }
 
 .topic:nth-child(1) { --tile: var(--color-accent); }
@@ -503,19 +536,23 @@ p {
   align-items: center;
 }
 
+.how__head {
+  grid-column: 1 / -1;
+}
+
 .how__figure {
   grid-column: 1;
-  grid-row: 1;
+  grid-row: 2;
   margin: 0;
 }
 
 .how__text {
   grid-column: 2;
-  grid-row: 1;
+  grid-row: 2;
 }
 
 .principles {
-  margin: var(--space-8) 0 0;
+  margin: 0;
   padding: 0;
   list-style: none;
 }
@@ -613,12 +650,43 @@ p {
   align-items: center;
   justify-content: space-between;
   gap: var(--space-3);
+  width: 100%;
   min-height: 3rem;
   padding: var(--space-3) var(--space-4);
   color: var(--color-ink-soft);
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
   background: var(--color-sheet);
   border: var(--rule) solid var(--color-hairline);
   border-radius: var(--radius-md);
+  -webkit-tap-highlight-color: transparent;
+  transition: border-color var(--dur-fast) var(--ease-out), transform var(--dur-fast) var(--ease-out);
+}
+
+.option:hover {
+  color: var(--color-ink);
+  border-color: var(--color-sky-deep);
+}
+
+.option:active {
+  transform: scale(0.99);
+}
+
+.option:focus-visible {
+  outline: 3px solid var(--color-sky-deep);
+  outline-offset: 3px;
+}
+
+.option.is-wrong {
+  color: var(--color-ink);
+  font-weight: 700;
+  background: var(--color-wrong-bg);
+  border-color: var(--color-wrong);
+}
+
+.option.is-wrong .option__icon {
+  background: var(--color-wrong);
 }
 
 .option.is-picked {
@@ -639,15 +707,38 @@ p {
   border-radius: 50%;
 }
 
+.option__icon[hidden] {
+  display: none;
+}
+
 .option__icon svg {
   width: 1rem;
   height: 1rem;
 }
 
+/* every explanation shares one grid cell, so the card keeps the height of the longest one */
 .lesson__explain {
+  display: grid;
   padding: var(--space-4);
   background: var(--color-paper);
   border-radius: var(--radius-md);
+}
+
+.explain {
+  grid-area: 1 / 1;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity var(--dur-fast) var(--ease-out), visibility 0s linear var(--dur-fast);
+}
+
+.explain.is-on {
+  opacity: 1;
+  visibility: visible;
+  transition-delay: 0s;
+}
+
+.explain:first-child {
+  color: var(--color-ink-soft);
 }
 
 .how__figure figcaption {
@@ -892,6 +983,12 @@ p {
     flex-wrap: wrap;
     justify-content: center;
     min-width: 0;
+  }
+
+  .explain,
+  .option,
+  .ticker__track li {
+    transition: none;
   }
 
   .ticker__track[aria-hidden] {
