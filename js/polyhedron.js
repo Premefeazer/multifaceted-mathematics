@@ -180,15 +180,24 @@ export function mountPolyhedron(canvas, { accentFace, onFace, labels = {} }) {
 
   const topicFaces = Object.keys(labels).map(Number).sort((a, b) => a - b);
 
+  function stepTopic() {
+    selected = topicFaces[(topicFaces.indexOf(selected) + 1) % topicFaces.length];
+    R = rotationBetween(NORMALS[selected], normalize([0.3, 0.25, 0.92])); // turn the picked face toward the viewer
+    vx = vy = 0;
+    lastInput = performance.now();
+    onFace(selected);
+    schedule();
+  }
+
+  // a screen reader's "activate" arrives as a click with no pointer (detail 0), not as a key press
+  canvas.addEventListener('click', (e) => {
+    if (e.detail === 0 && topicFaces.length) stepTopic();
+  });
+
   canvas.addEventListener('keydown', (e) => {
     if ((e.key === 'Enter' || e.key === ' ') && topicFaces.length) {
       e.preventDefault();
-      selected = topicFaces[(topicFaces.indexOf(selected) + 1) % topicFaces.length];
-      R = rotationBetween(NORMALS[selected], normalize([0.3, 0.25, 0.92])); // turn the picked face toward the viewer
-      vx = vy = 0;
-      lastInput = performance.now();
-      onFace(selected);
-      schedule();
+      stepTopic();
       return;
     }
     if (e.key === 'Escape' && selected !== -1) {

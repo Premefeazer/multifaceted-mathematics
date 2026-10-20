@@ -58,6 +58,10 @@ h3 {
   text-wrap: balance;
 }
 
+main:focus {
+  outline: none;
+}
+
 /* ---------- buttons: solid pill, small lift on hover, press on click ---------- */
 
 .btn {
@@ -386,11 +390,11 @@ h3 {
 }
 
 .ticker__pause .play,
-.ticker__pause[aria-pressed="true"] .pause {
+.ticker.is-paused .ticker__pause .pause {
   display: none;
 }
 
-.ticker__pause[aria-pressed="true"] .play {
+.ticker.is-paused .ticker__pause .play {
   display: block;
 }
 

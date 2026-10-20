@@ -337,3 +337,15 @@ Pushed `1cac315` and the deploy was live within about 30 seconds. Lighthouse on 
 | `chapters.html` | 100 | 100 | 100 | 100 | 1.2 s | 1.2 s | 0.036 |
 
 The small layout shift (previously 0) is the Newsreader web font swapping in over Georgia. Both pages inline their CSS; `/PLAN.md` still returns 404. Still not covered: a real screen reader, Safari and Firefox, real phones, and share previews in chat apps.
+
+## 16. Screen reader review (2026-10-20)
+
+No screen reader could be run here: only Windows Narrator is installed and its speech cannot be captured as text. Instead the accessibility tree the browser exposes was read on both pages, and the tab order and activation paths were exercised by script. That finds structural problems but is not the same as listening to NVDA or VoiceOver.
+
+Changes made from it:
+- The skip link now goes to `<main id="main">` ("Skip to main content") instead of a section halfway down the page.
+- The solid keeps a short name; its instructions moved into a description (`aria-describedby`). A screen reader's "activate" arrives as a click with no pointer, so a click with `detail` 0 now steps through the topic faces, the same as Enter.
+- The ticker pause button changes its label (Pause or Resume the scrolling topics) and no longer also sets `aria-pressed`, which would have read as a confusing double signal.
+- The lesson card is a labelled group (named by its question), so the three answers are announced with the question.
+
+Checked and fine: one `h1` with `h2` and `h3` in order on both pages, landmarks (banner, main, contentinfo), the second ticker list hidden with `aria-hidden`, no focusable element inside a hidden region, answer feedback announced through a `role="status"` region, and a logical tab order. Still to do by hand with NVDA (Windows) and VoiceOver (iPhone): the lesson card announcements, the solid's description and Enter behaviour, and how the pause button reads.

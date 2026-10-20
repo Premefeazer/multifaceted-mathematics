@@ -42,8 +42,7 @@ mountPolyhedron(document.getElementById('ico'), {
 const ticker = document.querySelector('.ticker');
 const pause = ticker.querySelector('.ticker__pause');
 pause.addEventListener('click', () => {
-  const paused = pause.getAttribute('aria-pressed') !== 'true';
-  pause.setAttribute('aria-pressed', paused);
-  pause.setAttribute('aria-label', paused ? 'Resume the scrolling topics' : 'Pause the scrolling topics');
+  const paused = !ticker.classList.contains('is-paused');
   ticker.classList.toggle('is-paused', paused);
+  pause.setAttribute('aria-label', paused ? 'Resume the scrolling topics' : 'Pause the scrolling topics'); // the label changes, so no aria-pressed
 });
