@@ -111,16 +111,11 @@ components:
   lesson-option-picked:
     backgroundColor: "{colors.check-green-wash}"
     textColor: "{colors.navy-ink}"
-  closing-panel:
-    backgroundColor: "{colors.navy-ink}"
-    textColor: "{colors.clean-sheet}"
-    rounded: "{rounded.lg}"
-    padding: "96px 48px"
   ticker:
     backgroundColor: "{colors.clean-sheet}"
     textColor: "{colors.navy-ink}"
     typography: "{typography.title}"
-    padding: "16px 24px"
+    padding: "16px"
 ---
 
 # Design System: Multifaceted Mathematics
@@ -145,7 +140,7 @@ The page reads as a precise instrument, not a toy: light-weight serif headings g
 A bright, cool, daylight palette: sky-tinted ground, clean white sheets, navy ink, and one orange mark.
 
 ### Primary
-- **Navy Ink** (oklch(24% 0.07 258)): body text, headings, primary buttons and the closing panel. Hover darkens toward lighter navy (oklch(34% 0.09 258)).
+- **Navy Ink** (oklch(24% 0.07 258)): body text, headings, and primary buttons. Hover darkens toward lighter navy (oklch(34% 0.09 258)).
 - **Draft Blue** (oklch(62% 0.15 248)): focus rings, the graph-paper lines and the topic-symbol accents. Never body text.
 
 ### Secondary
@@ -187,7 +182,7 @@ A bright, cool, daylight palette: sky-tinted ground, clean white sheets, navy in
 
 A single 75rem content column, centered, with 1.5rem side padding (1rem under 40rem). The hero is two columns (1.05fr text, 1fr solid) and stacks on tablet. The topic grid is six columns where the first two cards span three and the rest span two, collapsing to two columns under 64rem and one under 40rem. The lesson section is two columns (1.1fr / 1fr) that stack under 52rem.
 
-Spacing follows a 4pt scale (4, 8, 12, 16, 24, 32, 48, 64, 96 px). Sections breathe with 48 to 64px of vertical padding; the closing panel uses 96px. The header is a fixed full-width bar whose contents align to the same 75rem column, and a full-bleed ticker band sits directly under the hero.
+Spacing follows a 4pt scale (4, 8, 12, 16, 24, 32, 48, 64, 96 px). Sections breathe with 48 to 64px of vertical padding. The header is a fixed full-width bar whose contents align to the same 75rem column. The hero fills the first screen (at least 100svh, together with the ticker), and a full-bleed ticker band sits at the bottom of it, pinned to the bottom of the screen until the hero scrolls away.
 
 ## Elevation & Depth
 
@@ -213,7 +208,6 @@ Soft but not bubbly. Cards and panels use a 20px radius (`--radius-lg`), inner c
 - **Shape:** full pill (999px), 52px tall (44px in the header), 32px side padding.
 - **Primary:** solid Navy Ink with Clean Sheet text, Manrope 600 at 16px, an arrow icon where it navigates.
 - **Hover / Focus:** hover lightens to oklch(34% 0.09 258), lifts 1px and nudges the arrow 3px; active scales to 0.97; focus shows a 3px Draft Blue ring with 3px offset.
-- **Light:** on the navy closing panel, a Clean Sheet fill with Navy Ink text.
 
 ### Chips
 - **Style:** Daylight Sky fill, Slate Ink text, 1px hairline, pill radius, 14px text. Used for the *Coming soon* status.
@@ -231,13 +225,10 @@ Soft but not bubbly. Cards and panels use a 20px radius (`--radius-lg`), inner c
 A symbol tile (56px, 72px on lead cards; 12px radius, a facet-blue or Marker Orange fill, math-font symbol in Navy Ink), a serif title, one question in Slate Ink and a status chip pinned to the bottom. Cards are not clickable on the landing page and have no hover effect.
 
 ### Ticker
-A full-bleed Clean Sheet band with hairline top and bottom, serif 22px topic names with a Draft Blue math symbol before each. It scrolls left to right at a steady 45s per loop, pauses on hover and stops under reduced motion, where the names wrap and sit still.
+A full-bleed Clean Sheet band with hairline top and bottom, serif 22px topic names with a Draft Blue math symbol before each. It has 16px padding on all sides and is sticky to the bottom of the screen while the hero is in view. It scrolls left to right at a steady 45s per loop, pauses on hover (there is no pause button) and stops under reduced motion, where the names wrap and sit still.
 
 ### Lesson screen
 A real HTML card (not a device frame): topic label and five progress segments, a serif question, three options (12px radius, hairline), the picked option in Check Green Wash with a green check badge, and an explanation block on Daylight Sky.
-
-### Closing panel
-Navy Ink panel with a faint white grid in its lower right corner, a white display headline with the orange underline, and a light button.
 
 ## Do's and Don'ts
 

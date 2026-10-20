@@ -79,7 +79,7 @@ Rules: headings are always upright, never italic. The hero headline is 7 words o
 3. **Refined buttons** — solid navy pills with a soft shadow, a small lift on hover, an arrow that nudges forward, a gentle press on click.
 4. **Topic cards** — one tile color per topic, drawn from the same ramp as the shape. The first two cards are larger, so the grid is not a wall of identical boxes.
    Since 2026-10-20 the eight topic faces carry their topic symbol (upright, fading as the face turns away). Only those faces can be picked: a pick outlines the face, highlights that topic in the ticker, and turns the readout under the shape into a link to the topic's card on `chapters.html` (the card gets a focus outline via `:target`). Tapping anywhere else clears the pick.
-5. **Ticker** — a full-width strip right under the hero. The eight topic names with their symbols scroll slowly from left to right, pause on hover. Two identical lists make the loop seamless; the second is hidden from screen readers.
+5. **Ticker** — a full-width strip right under the hero. The eight topic names with their symbols scroll slowly from left to right and pause on hover. Since 2026-10-20 the strip is pinned to the bottom of the screen (`position: sticky`) until the hero scrolls away, and it has no pause button. Two identical lists make the loop seamless; the second is hidden from screen readers. `.intro` wraps the hero and the ticker, is at least one screen tall, and lets the hero grow, so the ticker starts at the bottom edge of the first screen on every device.
 
 Motion rules:
 - Animate only `transform` / `opacity`, with one shared easing set. One exception: the headline line draws itself once with `stroke-dashoffset`.
@@ -100,7 +100,7 @@ Motion rules:
 | Hero | **See math from every side.** |
 | Sub, reassurance | Removed on 2026-10-20. The hero is the headline, one button and the shape. The page `<meta>` description keeps the one-line summary: *Interactive math lessons for middle and high school, from logic and sets to calculus. Make a guess first, then see why.* |
 | Topics heading | Math, from the ground up. |
-| Closing | Every problem has another side. |
+| Closing | Removed on 2026-10-20 (*Every problem has another side.*). |
 
 ## 5. Page structure
 
@@ -154,9 +154,9 @@ Motion rules:
 | 2 | Topics | 8 topic cards, two large then six small, each with a symbol tile, a thought-provoking question and a *Coming soon* tag. | Moved to `chapters.html` (2026-10-20) |
 | 3 | How a lesson works | Explain the method with a lesson screen built from real HTML (no fake phone frame) plus callouts: *One idea per screen* · *You try first, we explain after* · *Hints, not answers* · *Five minutes, tops*. | Built |
 | 4 | What's next | Honest roadmap that also explained why there is no login yet: *Now* / *Next* / *Later*. | Removed 2026-10-20: it read as an internal team update, and the *Coming soon* tags already say what is unfinished |
-| 5 | Closing + footer | Big line *Every problem has another side.* + button. A dark panel with *Every problem has another side.* and an **Explore topics** button. The footer is one © line, no links. | Built |
+| 5 | Closing + footer | Big line *Every problem has another side.* + button. A dark panel with *Every problem has another side.* and an **Explore topics** button. The footer is one © line, no links. | Closing panel removed 2026-10-20 (the hero already has the button); the footer stays |
 
-**Since 2026-10-20 the diagram above is two pages.** The landing page keeps sections 0, 1, 3, 4 and 5, so it runs hero, ticker, how a lesson works, closing. Section 2 (the topic cards) is the whole body of `chapters.html`, under the same nav and footer; its nav button reads **Home**. On the landing page the nav button **Topics** and both **Explore topics** buttons link to `chapters.html`, and the skip link jumps to *How a lesson works*.
+**Since 2026-10-20 the diagram above is two pages.** The landing page keeps sections 0, 1, 3, 4 and 5, so it runs hero, ticker, how a lesson works, footer (the closing panel was removed the same day). Section 2 (the topic cards) is the whole body of `chapters.html`, under the same nav and footer; its nav button reads **Home**. On the landing page the nav button **Topics** and the hero **Explore topics** button link to `chapters.html`, and the skip link jumps to *How a lesson works*.
 
 ### 5.1 Topics (in learning order)
 
@@ -221,6 +221,7 @@ Multifaceted Mathematics/
 - [x] **Phase 6 — Topics page and type refinement (2026-10-20):** topic cards moved to `chapters.html`, headings switched to Newsreader, softer radii and shadows, landing copy edited to remove AI-sounding phrasing. Same day: full-width header, a topic ticker under the hero, and the taglines under headings and beside the hero button removed.
 - [x] **Phase 7 — Playable first (2026-10-20, from the first critique):** the example lesson card is now interactive (pick any answer, each has its own explanation; the card keeps one height) and sits right under the ticker, with the heading above it; the topic symbols are on the solid's faces and picking one links to its topic. The harden items followed the same day: a pause button on the ticker (WCAG 2.2.2), Enter or Space steps through the topic faces and Escape clears the pick, the `chapters.html` card names are `h2` (no more h1 to h3 skip), and headings and paragraphs use `text-wrap: balance` and `pretty` so no line ends on one word. Still open from the critique: trimming the roadmap, one CTA name, an About line in the footer. The detector still reports the ticker (marquee, and a cramped-padding warning that is a false positive for a full-bleed band) and the graph-paper background (advisory); both are deliberate. Committed locally, not yet pushed or deployed.
 - [x] **Phase 8 — Critique clean-up (2026-10-20):** the roadmap section is gone (CSS included); the footer has a one-line description and a link to the source repository; the loose `DESIGN.md` variants and the deprecated `## Register` line in `PRODUCT.md` were removed. The nav button stays **Topics** and its target page is titled Topics. Open: who runs the project and a contact line for teachers (needs your input), and the live Lighthouse re-run.
+- [x] **Phase 9 — Ticker pinned, closing panel removed (2026-10-20):** the ticker is `position: sticky; bottom: 0` inside a new `.intro` wrapper, so it stays at the bottom of the screen until the hero scrolls away; `.intro` is at least `100svh` and the hero fills it, so the ticker starts at the bottom edge on phones and tall desktops too. Checked in the browser at 375 × 812, 768 × 1024 and 1440 × 900. The ticker's pause button and the closing panel (with its light button style) were removed. Without the pause button, touch and keyboard users cannot stop the ticker (WCAG 2.2.2); only hover and reduced motion do, and this was a deliberate choice. The ticker now has 16px padding on all sides, which clears the detector's cramped-padding finding. The marquee finding is ignored for `index.html` in `.impeccable/config.json` because the scrolling is intended.
 
 ## 8. Definition of done
 
@@ -271,7 +272,7 @@ Log in / sign up · user accounts · backend / database · lesson content · puz
 | Area | Result |
 |---|---|
 | Responsive | Checked at 320, 375, 414, 768, 1024 and 1440 px: no horizontal scroll, no element past the viewport, no button text on two lines. Cards go 3 → 2 → 1 columns, the roadmap goes vertical on phones. |
-| Keyboard | Tab order is skip link → brand → Topics → Explore topics → hero shape → closing button, then leaves the page (no trap). Every stop shows a 3 px focus ring. Arrow keys turn the hero shape. |
+| Keyboard | Tab order is skip link → brand → Topics → Explore topics → hero shape, then leaves the page (no trap). Every stop shows a 3 px focus ring. Arrow keys turn the hero shape. |
 | Structure | One `h1`, then `h2` / `h3` in order. Landmarks: header, main, four labelled sections, footer. No duplicate ids, every control has a name, `lang="en"`. |
 | Reduced motion | Verified in headless Chrome with `prefers-reduced-motion: reduce`: no auto-spin, no inertia, headline curve already drawn, no smooth scroll, no transitions. Arrow keys still turn the shape. |
 | Lighthouse | Mobile 100 / 100 / 100 / 100 (performance, accessibility, best practices, SEO). Desktop 98 / 100 / 100 / 100 before the fixes below. CLS 0. |
@@ -345,7 +346,7 @@ No screen reader could be run here: only Windows Narrator is installed and its s
 Changes made from it:
 - The skip link now goes to `<main id="main">` ("Skip to main content") instead of a section halfway down the page.
 - The solid keeps a short name; its instructions moved into a description (`aria-describedby`). A screen reader's "activate" arrives as a click with no pointer, so a click with `detail` 0 now steps through the topic faces, the same as Enter.
-- The ticker pause button changes its label (Pause or Resume the scrolling topics) and no longer also sets `aria-pressed`, which would have read as a confusing double signal.
+- The ticker pause button changes its label (Pause or Resume the scrolling topics) and no longer also sets `aria-pressed`, which would have read as a confusing double signal. (The button was removed later, see Phase 9.)
 - The lesson card is a labelled group (named by its question), so the three answers are announced with the question.
 
-Checked and fine: one `h1` with `h2` and `h3` in order on both pages, landmarks (banner, main, contentinfo), the second ticker list hidden with `aria-hidden`, no focusable element inside a hidden region, answer feedback announced through a `role="status"` region, and a logical tab order. Still to do by hand with NVDA (Windows) and VoiceOver (iPhone): the lesson card announcements, the solid's description and Enter behaviour, and how the pause button reads.
+Checked and fine: one `h1` with `h2` and `h3` in order on both pages, landmarks (banner, main, contentinfo), the second ticker list hidden with `aria-hidden`, no focusable element inside a hidden region, answer feedback announced through a `role="status"` region, and a logical tab order. Still to do by hand with NVDA (Windows) and VoiceOver (iPhone): the lesson card announcements, the solid's description and Enter behaviour, and, until the button was removed, how the pause button read.
