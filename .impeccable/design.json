@@ -1,0 +1,318 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-10-20T04:02:52+00:00",
+  "title": "Design System: Multifaceted Mathematics",
+  "extensions": {
+    "colorMeta": {
+      "navy-ink": {
+        "role": "primary",
+        "displayName": "Navy Ink",
+        "canonical": "oklch(24% 0.07 258)",
+        "tonalRamp": [
+          "oklch(15% 0.07 258)",
+          "oklch(26% 0.07 258)",
+          "oklch(38% 0.07 258)",
+          "oklch(49% 0.07 258)",
+          "oklch(61% 0.07 258)",
+          "oklch(72% 0.07 258)",
+          "oklch(84% 0.07 258)",
+          "oklch(95% 0.07 258)"
+        ]
+      },
+      "draft-blue": {
+        "role": "primary",
+        "displayName": "Draft Blue",
+        "canonical": "oklch(62% 0.15 248)",
+        "tonalRamp": [
+          "oklch(15% 0.15 248)",
+          "oklch(26% 0.15 248)",
+          "oklch(38% 0.15 248)",
+          "oklch(49% 0.15 248)",
+          "oklch(61% 0.15 248)",
+          "oklch(72% 0.15 248)",
+          "oklch(84% 0.15 248)",
+          "oklch(95% 0.15 248)"
+        ]
+      },
+      "marker-orange": {
+        "role": "secondary",
+        "displayName": "Marker Orange",
+        "canonical": "oklch(72% 0.18 48)",
+        "tonalRamp": [
+          "oklch(15% 0.18 48)",
+          "oklch(26% 0.18 48)",
+          "oklch(38% 0.18 48)",
+          "oklch(49% 0.18 48)",
+          "oklch(61% 0.18 48)",
+          "oklch(72% 0.18 48)",
+          "oklch(84% 0.18 48)",
+          "oklch(95% 0.18 48)"
+        ]
+      },
+      "daylight-sky": {
+        "role": "neutral",
+        "displayName": "Daylight Sky",
+        "canonical": "oklch(96.5% 0.022 228)",
+        "tonalRamp": [
+          "oklch(15% 0.022 228)",
+          "oklch(26% 0.022 228)",
+          "oklch(38% 0.022 228)",
+          "oklch(49% 0.022 228)",
+          "oklch(61% 0.022 228)",
+          "oklch(72% 0.022 228)",
+          "oklch(84% 0.022 228)",
+          "oklch(95% 0.022 228)"
+        ]
+      },
+      "clean-sheet": {
+        "role": "neutral",
+        "displayName": "Clean Sheet",
+        "canonical": "oklch(99.5% 0.004 230)",
+        "tonalRamp": [
+          "oklch(15% 0.004 230)",
+          "oklch(26% 0.004 230)",
+          "oklch(38% 0.004 230)",
+          "oklch(49% 0.004 230)",
+          "oklch(61% 0.004 230)",
+          "oklch(72% 0.004 230)",
+          "oklch(84% 0.004 230)",
+          "oklch(95% 0.004 230)"
+        ]
+      },
+      "soft-sky": {
+        "role": "neutral",
+        "displayName": "Soft Sky",
+        "canonical": "oklch(85% 0.09 232)",
+        "tonalRamp": [
+          "oklch(15% 0.09 232)",
+          "oklch(26% 0.09 232)",
+          "oklch(38% 0.09 232)",
+          "oklch(49% 0.09 232)",
+          "oklch(61% 0.09 232)",
+          "oklch(72% 0.09 232)",
+          "oklch(84% 0.09 232)",
+          "oklch(95% 0.09 232)"
+        ]
+      },
+      "slate-ink": {
+        "role": "neutral",
+        "displayName": "Slate Ink",
+        "canonical": "oklch(46% 0.05 256)",
+        "tonalRamp": [
+          "oklch(15% 0.05 256)",
+          "oklch(26% 0.05 256)",
+          "oklch(38% 0.05 256)",
+          "oklch(49% 0.05 256)",
+          "oklch(61% 0.05 256)",
+          "oklch(72% 0.05 256)",
+          "oklch(84% 0.05 256)",
+          "oklch(95% 0.05 256)"
+        ]
+      },
+      "check-green": {
+        "role": "tertiary",
+        "displayName": "Check Green",
+        "canonical": "oklch(76% 0.15 160)",
+        "tonalRamp": [
+          "oklch(15% 0.15 160)",
+          "oklch(26% 0.15 160)",
+          "oklch(38% 0.15 160)",
+          "oklch(49% 0.15 160)",
+          "oklch(61% 0.15 160)",
+          "oklch(72% 0.15 160)",
+          "oklch(84% 0.15 160)",
+          "oklch(95% 0.15 160)"
+        ]
+      }
+    },
+    "typographyMeta": {
+      "display": {
+        "displayName": "Display",
+        "purpose": "The hero headline only."
+      },
+      "headline": {
+        "displayName": "Headline",
+        "purpose": "Section headings."
+      },
+      "title": {
+        "displayName": "Title",
+        "purpose": "Topic names, principles, roadmap stages, ticker items."
+      },
+      "body": {
+        "displayName": "Body",
+        "purpose": "Questions and supporting text."
+      },
+      "label": {
+        "displayName": "Label",
+        "purpose": "Buttons and the brand wordmark."
+      }
+    },
+    "shadows": [
+      {
+        "name": "button-lift",
+        "value": "0 10px 20px -10px oklch(24% 0.07 258 / 0.32)",
+        "purpose": "Primary buttons at rest."
+      },
+      {
+        "name": "card-lift",
+        "value": "0 20px 40px -30px oklch(24% 0.07 258 / 0.32)",
+        "purpose": "Topic cards."
+      },
+      {
+        "name": "lesson-lift",
+        "value": "0 24px 48px -28px oklch(24% 0.07 258 / 0.32)",
+        "purpose": "The example lesson card."
+      }
+    ],
+    "motion": [
+      {
+        "name": "ease-out",
+        "value": "cubic-bezier(0.22, 1, 0.36, 1)",
+        "purpose": "Button lift, arrow nudge, headline underline draw."
+      },
+      {
+        "name": "dur-fast",
+        "value": "150ms",
+        "purpose": "Hover and press transitions."
+      },
+      {
+        "name": "dur-draw",
+        "value": "1100ms",
+        "purpose": "The headline underline draws once."
+      },
+      {
+        "name": "ticker-loop",
+        "value": "45s linear infinite",
+        "purpose": "Left-to-right topic ticker; pauses on hover, off under reduced motion."
+      }
+    ],
+    "breakpoints": [
+      {
+        "name": "phone",
+        "value": "40rem"
+      },
+      {
+        "name": "tablet",
+        "value": "52rem"
+      },
+      {
+        "name": "desktop",
+        "value": "64rem"
+      }
+    ]
+  },
+  "components": [
+    {
+      "name": "Primary Button",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "Solid navy pill for the main action.",
+      "html": "<button class=\"ds-btn\">Explore topics</button>",
+      "css": ".ds-btn{background:var(--color-ink,#0f1a35);color:var(--color-sheet,#fff);font:600 16px/1 Manrope,system-ui,sans-serif;min-height:52px;padding:0 32px;border:0;border-radius:999px;box-shadow:0 10px 20px -10px oklch(24% 0.07 258 / .32);cursor:pointer;transition:transform .15s,background-color .15s}.ds-btn:hover{background:var(--color-ink-hover,#243252);transform:translateY(-1px)}.ds-btn:active{transform:scale(.97)}.ds-btn:focus-visible{outline:3px solid var(--color-sky-deep,#3f7fd1);outline-offset:3px}"
+    },
+    {
+      "name": "Light Button",
+      "kind": "button",
+      "refersTo": "button-light",
+      "description": "White pill used on the navy closing panel.",
+      "html": "<button class=\"ds-btn-light\">Explore topics</button>",
+      "css": ".ds-btn-light{background:var(--color-sheet,#fff);color:var(--color-ink,#0f1a35);font:600 16px/1 Manrope,system-ui,sans-serif;min-height:52px;padding:0 32px;border:0;border-radius:999px;cursor:pointer}.ds-btn-light:hover{background:var(--color-paper,#e6f4fb)}.ds-btn-light:focus-visible{outline:3px solid var(--color-sheet,#fff);outline-offset:3px}"
+    },
+    {
+      "name": "Status Chip",
+      "kind": "chip",
+      "refersTo": "status-chip",
+      "description": "Marks unfinished topics as Coming soon.",
+      "html": "<span class=\"ds-chip\">Coming soon</span>",
+      "css": ".ds-chip{display:inline-block;padding:4px 12px;font:400 14px/1.2 'Atkinson Hyperlegible Next',system-ui,sans-serif;color:var(--color-ink-soft,#53607a);background:var(--color-paper,#e6f4fb);border:1px solid oklch(24% 0.07 258 / .12);border-radius:999px}"
+    },
+    {
+      "name": "Navigation Bar",
+      "kind": "nav",
+      "refersTo": "nav-bar",
+      "description": "Fixed full-width bar with brand and one action.",
+      "html": "<header class=\"ds-nav\"><span class=\"ds-brand\"><b>Multifaceted</b> Mathematics</span><button class=\"ds-nav-btn\">Topics</button></header>",
+      "css": ".ds-nav{display:flex;align-items:center;justify-content:space-between;padding:8px 24px;background:var(--color-sheet,#fff);border-bottom:1px solid oklch(24% 0.07 258 / .12);color:var(--color-ink,#0f1a35);font:500 12px/1.15 Manrope,system-ui,sans-serif}.ds-brand b{font:800 16px/1.05 Manrope,system-ui,sans-serif;margin-right:4px}.ds-nav-btn{min-height:44px;padding:0 16px;font:600 15px/1 Manrope,system-ui,sans-serif;color:var(--color-sheet,#fff);background:var(--color-ink,#0f1a35);border:0;border-radius:999px;cursor:pointer}.ds-nav-btn:hover{background:var(--color-ink-hover,#243252)}.ds-nav-btn:focus-visible{outline:3px solid var(--color-sky-deep,#3f7fd1);outline-offset:3px}"
+    },
+    {
+      "name": "Topic Card",
+      "kind": "card",
+      "refersTo": "topic-card",
+      "description": "Symbol tile, serif name, one question and a status chip.",
+      "html": "<article class=\"ds-card\"><span class=\"ds-sym\">&#8712;</span><h3>Set Theory</h3><p>Are there more whole numbers than even numbers?</p><span class=\"ds-chip2\">Coming soon</span></article>",
+      "css": ".ds-card{display:flex;flex-direction:column;align-items:flex-start;gap:12px;padding:24px;background:var(--color-sheet,#fff);border:1px solid oklch(24% 0.07 258 / .12);border-radius:20px;box-shadow:0 20px 40px -30px oklch(24% 0.07 258 / .32);color:var(--color-ink,#0f1a35)}.ds-sym{display:grid;place-items:center;width:56px;height:56px;margin-bottom:8px;font:700 26px/1 'Cambria Math','STIX Two Math',serif;background:var(--facet-3,#6bb4ec);border-radius:12px}.ds-card h3{margin:0;font:500 22px/1.15 Newsreader,Georgia,serif;letter-spacing:-.01em}.ds-card p{margin:0;font:400 17px/1.6 'Atkinson Hyperlegible Next',system-ui,sans-serif;color:var(--color-ink-soft,#53607a)}.ds-chip2{padding:4px 12px;font:400 14px/1.2 system-ui,sans-serif;color:var(--color-ink-soft,#53607a);background:var(--color-paper,#e6f4fb);border:1px solid oklch(24% 0.07 258 / .12);border-radius:999px}"
+    },
+    {
+      "name": "Lesson Option (picked)",
+      "kind": "custom",
+      "refersTo": "lesson-option-picked",
+      "description": "Answer option in its correct, picked state.",
+      "html": "<div class=\"ds-opt\">Not necessarily<span class=\"ds-tick\"><svg viewBox=\"0 0 24 24\" width=\"16\" height=\"16\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"3\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"m6.5 12.5 3.5 3.5 7.5-8\"/></svg></span></div>",
+      "css": ".ds-opt{display:flex;align-items:center;justify-content:space-between;gap:12px;min-height:48px;padding:12px 16px;font:700 17px/1.4 'Atkinson Hyperlegible Next',system-ui,sans-serif;color:var(--color-ink,#0f1a35);background:var(--color-correct-bg,#e4f7ec);border:1px solid var(--color-correct,#5dc896);border-radius:12px}.ds-tick{display:grid;place-items:center;width:24px;height:24px;color:var(--color-ink,#0f1a35);background:var(--color-correct,#5dc896);border-radius:50%}"
+    },
+    {
+      "name": "Ticker",
+      "kind": "custom",
+      "refersTo": "ticker",
+      "description": "Full-bleed strip of the eight topics.",
+      "html": "<div class=\"ds-ticker\"><span><i>&#8658;</i>Logic</span><span><i>&#8712;</i>Set Theory</span><span><i>&#8477;</i>Real Numbers</span></div>",
+      "css": ".ds-ticker{display:flex;gap:48px;padding:16px 24px;overflow:hidden;background:var(--color-sheet,#fff);border-block:1px solid oklch(24% 0.07 258 / .12);color:var(--color-ink,#0f1a35)}.ds-ticker span{display:flex;align-items:baseline;gap:12px;white-space:nowrap;font:500 22px/1 Newsreader,Georgia,serif;letter-spacing:-.01em}.ds-ticker i{font:700 20px/1 'Cambria Math','STIX Two Math',serif;font-style:normal;color:var(--color-sky-deep,#3f7fd1)}"
+    }
+  ],
+  "narrative": {
+    "northStar": "The Drafting Table",
+    "overview": "A bright drafting surface. Faint graph paper fades out toward the edges, hairline rules do the framing, navy is the only ink, and one lit solid (the 20-faced icosahedron) sits in the middle of the sheet like the piece being worked on. Everything else is measured and quiet so the object and the question on the page get all the attention.\n\nThe page reads as a precise instrument, not a toy: light-weight serif headings give it a printed, grown-up voice, while the cool daylight ground keeps it open and bright. Playfulness is allowed in exactly two places: the shape you can drag, and a single orange mark.",
+    "keyCharacteristics": [
+      "Bright, cool daylight ground with graph paper that fades out instead of tiling.",
+      "Light-weight upright serif headings over a legible humanist sans body.",
+      "Hairline 1px borders and long, soft shadows; no heavy outlines.",
+      "One confident object (the icosahedron) and one orange highlight per view.",
+      "Navy ink carries text and every primary action."
+    ],
+    "rules": [
+      {
+        "name": "The One Highlight Rule",
+        "body": "Marker Orange appears once per view. It is never a button fill and never decorates text.",
+        "section": "colors"
+      },
+      {
+        "name": "The Navy Action Rule",
+        "body": "Every primary action is solid Navy Ink with white text; contrast stays above 15:1.",
+        "section": "colors"
+      },
+      {
+        "name": "The Light Serif Rule",
+        "body": "Headings are upright serif at weight 500. Never bold, never italic, never a single italic word inside a heading.",
+        "section": "typography"
+      },
+      {
+        "name": "The Soft Lift Rule",
+        "body": "Shadows are long, low and diffuse. Borders stay 1px hairlines (Navy Ink at 12%); never a heavy outline.",
+        "section": "elevation"
+      },
+      {
+        "name": "The Sheet Rule",
+        "body": "Content sits on clean white sheets (Clean Sheet) over the Daylight Sky ground. Sheets are flat, hairline-bordered and lightly lifted; they are never tinted, never glassy.",
+        "section": "elevation"
+      }
+    ],
+    "dos": [
+      "Do keep primary actions solid Navy Ink with white text (contrast about 16:1).",
+      "Do use Marker Orange once per view, as a highlight only.",
+      "Do set headings in upright Newsreader at weight 500, with letter-spacing between -0.01em and -0.025em.",
+      "Do frame surfaces with 1px hairlines (Navy Ink at 12%) and long, low shadows.",
+      "Do animate only transform and opacity (the headline underline's stroke draw is the one exception) and provide a reduced-motion alternative for every motion.",
+      "Do keep tap targets at 44px or larger and show a 3px Draft Blue focus ring.",
+      "Do let graph-paper lines fade out toward the edges with a radial mask; never tile them across the full page."
+    ],
+    "donts": [
+      "Don't use gradient text, glassmorphism, glow blobs or purple-blue gradients.",
+      "Don't fill a button with orange or use orange for body text.",
+      "Don't set headings in bold sans or in italics.",
+      "Don't add descriptive taglines under headings or beside buttons; the content explains itself (PRODUCT.md anti-reference: filler).",
+      "Don't use a row of identical icon-in-rounded-box cards, side-stripe borders, or fake phone or browser frames.",
+      "Don't invent numbers, reviews or logos; unfinished things say Coming soon.",
+      "Don't draw decoration that is not measured: no blobs, confetti, or random gradients. Patterns come from real math (grids, circles with axes, facets)."
+    ]
+  }
+}
