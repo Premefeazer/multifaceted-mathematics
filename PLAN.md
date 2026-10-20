@@ -1,6 +1,6 @@
 # Multifaceted Mathematics — Landing Page Plan
 
-> **Status:** The landing page is built, QA'd and live at https://premefeazer.github.io/multifaceted-mathematics/ (2026-10-19). Remaining: the checks listed under "Not covered" in section 12 (a real screen reader, Safari and Firefox, real phones, share previews in chat apps), then the next project: the lessons themselves.
+> **Status:** The landing page is built, QA'd and live at https://premefeazer.github.io/multifaceted-mathematics/ (2026-10-19). Remaining: the checks listed under "Not covered" in section 12 (a real screen reader, Safari and Firefox, real phones, share previews in chat apps), then the next project: the lessons themselves. On 2026-10-20 the topic cards moved to their own page (`chapters.html`) and the headings switched to a serif; both are committed but not yet pushed.
 > This file is both the plan and the tracker. Tick the checkboxes as each step finishes.
 > **Language rule:** everything on disk (docs, code, comments, commits) is English. Thai is for chat only.
 
@@ -21,7 +21,8 @@ A single-page landing site, fully in English, for an interactive math-learning p
 | Topic | Decision | Consequence |
 |---|---|---|
 | Audience | Middle and high school students (~12–18) | Direct, short copy. Topics are explained through questions a teenager can feel. |
-| Main CTA | **Explore topics** scrolls to the topic cards | No backend, no user data collected. |
+| Main CTA | **Explore topics** opens the topics page (`chapters.html`), which holds the topic cards | No backend, no user data collected. |
+| Pages (2026-10-20) | Two pages: the landing page (`index.html`) and the topics page (`chapters.html`) | The landing page sells the idea and explains the method. The cards live on their own page. |
 | Content on the page | Topic cards only, all *Coming soon* (decided 2026-10-19) | Lesson writing is a separate, later project. |
 | Topics | Logic · Set Theory · Real Numbers · Functions & Relations · Number Theory · Combinatorics · Sequences & Series · Calculus Basics | Ordered so each builds on the last. Logic and Set Theory come first because everything else rests on them. |
 | Tech | Plain HTML / CSS / JS, no build step | No dependencies. Deploys as static files anywhere. |
@@ -52,7 +53,7 @@ All values live in `css/tokens.css`. OKLCH.
 | `--color-sky-deep` | `oklch(62% 0.15 248)` | Grid lines, focus rings |
 | `--color-ink` | `oklch(24% 0.07 258)` | Text and primary buttons (deep navy) |
 | `--color-ink-soft` | `oklch(46% 0.05 256)` | Secondary text |
-| `--color-accent` | `oklch(72% 0.18 48)` | Orange: one highlight only (the first-topic face, the Logic tile, the headline curve) |
+| `--color-accent` | `oklch(72% 0.18 48)` | Orange: one highlight only (the first-topic face, the Logic tile, the headline line) |
 | `--facet-1` … `--facet-5` | blue ramp | Shading of the polyhedron faces and the topic tiles |
 
 Rules:
@@ -63,7 +64,8 @@ Rules:
 
 | Role | Font | Why |
 |---|---|---|
-| Headings | **Manrope** (700–800) | Clean modern grotesk with tight tracking. Professional. |
+| Headings | **Newsreader** (500) | A refined text serif, light weight, tight tracking. Replaced Manrope for headings on 2026-10-20 because heavy sans headings felt blunt. |
+| Buttons, brand, small labels | **Manrope** (500–800) | Keeps the interface chrome crisp next to the serif headings. |
 | Body | **Atkinson Hyperlegible Next** | Built for legibility. Tells 1 / l / I and 0 / O apart, which matters for math. |
 | Numbers / code-like text | **Atkinson Hyperlegible Mono** | The hero hint and the footer. |
 | Math symbols in tiles | System math fonts (Cambria Math, STIX, Segoe UI Symbol) | The web fonts above do not carry symbols such as ∈ ℝ ≡. |
@@ -73,12 +75,12 @@ Rules: headings are always upright, never italic. The hero headline is 7 words o
 ### 4.3 Patterns and animation
 
 1. **Hero icosahedron** — drag to spin with inertia, slow auto-rotation when idle, arrow keys turn it, tap a face to see its topic.
-2. **Graph-paper sky** — a very faint grid that fades out toward the edges, plus a thin curve that draws itself under *every side* (plays once).
+2. **Graph-paper sky** — a very faint grid that fades out toward the edges, plus a thin straight line that draws itself under *every side* (plays once).
 3. **Refined buttons** — solid navy pills with a soft shadow, a small lift on hover, an arrow that nudges forward, a gentle press on click.
 4. **Topic cards** — one tile color per topic, drawn from the same ramp as the shape. The first two cards are larger, so the grid is not a wall of identical boxes.
 
 Motion rules:
-- Animate only `transform` / `opacity`, with one shared easing set. One exception: the headline curve draws itself once with `stroke-dashoffset`.
+- Animate only `transform` / `opacity`, with one shared easing set. One exception: the headline line draws itself once with `stroke-dashoffset`.
 - No fade-up on scroll for every section.
 - Respect `prefers-reduced-motion`: no auto-spin, no inertia, no self-drawing line.
 - The canvas stops rendering when scrolled off-screen.
@@ -93,7 +95,7 @@ Motion rules:
 | Where | Copy |
 |---|---|
 | Hero | **See math from every side.** |
-| Sub | Interactive math lessons for middle and high school, from logic and sets to calculus. Drag it, test it, figure it out. |
+| Sub | Interactive math lessons for middle and high school, from logic and sets to calculus. Make a guess first, then see why. |
 | Reassurance | No account needed. First lessons are on the way. |
 | Topics heading | Math, from the ground up. |
 | Closing | Every problem has another side. |
@@ -147,10 +149,12 @@ Motion rules:
 |---|---|---|---|
 | 0 | Nav — floating capsule | Mark + wordmark and a **Topics** button. On mobile it is the same two items, no hamburger. | Built |
 | 1 | Hero | Headline left, draggable icosahedron right. On mobile the headline comes first. | Built |
-| 2 | Topics | 8 topic cards, two large then six small, each with a symbol tile, a thought-provoking question and a *Coming soon* tag. | Built |
+| 2 | Topics | 8 topic cards, two large then six small, each with a symbol tile, a thought-provoking question and a *Coming soon* tag. | Moved to `chapters.html` (2026-10-20) |
 | 3 | How a lesson works | Explain the method with a lesson screen built from real HTML (no fake phone frame) plus callouts: *One idea per screen* · *You try first, we explain after* · *Hints, not answers* · *Five minutes, tops*. | Built |
 | 4 | What's next | Honest roadmap that also explains why there is no login yet: *Now:* topic overview → *Next:* first lessons → *Later:* accounts, streaks, progress. | Built |
 | 5 | Closing + footer | Big line *Every problem has another side.* + button. A dark panel with *Every problem has another side.* and an **Explore topics** button. The footer is one © line, no links. | Built |
+
+**Since 2026-10-20 the diagram above is two pages.** The landing page keeps sections 0, 1, 3, 4 and 5, so it runs hero, how a lesson works, what's next, closing. Section 2 (the topic cards) is the whole body of `chapters.html`, under the same nav and footer; its nav button reads **Home**. On the landing page the nav button **Topics** and both **Explore topics** buttons link to `chapters.html`, and the skip link jumps to *How a lesson works*.
 
 ### 5.1 Topics (in learning order)
 
@@ -165,7 +169,7 @@ Motion rules:
 | 7 | Sequences & Series | Σ | Can infinitely many steps add up to a finite distance? |
 | 8 | Calculus Basics | ∫ | How fast is a falling ball at exactly one second? |
 
-The HTML is the single source for topic names. The hero shape reads them from the cards, so adding or renaming a topic is one edit.
+The cards live in `chapters.html`. The hero shape on the landing page no longer reads them from the DOM, so `js/main.js` keeps its own list of names in the same order. Adding or renaming a topic is two edits: the card and that list.
 
 ### 5.2 Parked: the puzzle
 
@@ -175,21 +179,22 @@ The HTML is the single source for topic names. The hero shape reads them from th
 
 ```text
 Multifaceted Mathematics/
-├── index.html
+├── index.html           landing page
+├── chapters.html        the eight topic cards
 ├── css/
 │   ├── tokens.css       colors, fonts, spacing, easing — change the design here only
 │   └── styles.css
 ├── js/
 │   ├── geometry.js      pure icosahedron math (no DOM, unit-tested)
 │   ├── polyhedron.js    canvas 2D: shading, drag, inertia, tap-to-pick
-│   └── main.js          wires the hero shape to the topic cards
+│   └── main.js          wires the hero shape to the topic names
 ├── scripts/
-│   └── inline-css.mjs   deploy-time step: inlines the two stylesheets into index.html
+│   └── inline-css.mjs   deploy-time step: inlines the two stylesheets into a page
 ├── tests/
 │   ├── geometry.test.js pure-logic tests, run with `node --test`
 │   └── inline.test.js
 ├── assets/mark.svg      logo mark and favicon (generated from the real geometry)
-├── .github/workflows/pages.yml  tests, then publishes only index.html, css, js, assets
+├── .github/workflows/pages.yml  tests, then publishes only the two pages, js, assets
 ├── .claude/launch.json  preview server config for the Claude app
 └── PLAN.md
 ```
@@ -210,6 +215,7 @@ Multifaceted Mathematics/
 - [x] **Phase 3 — How a lesson works · What's next · Closing** (built, awaiting review)
 - [x] **Phase 4 — QA** (done, results in section 12). Not done: OG image, because there is no public URL yet.
 - [x] **Phase 5 — Deploy to GitHub Pages** (live at https://premefeazer.github.io/multifaceted-mathematics/; see sections 13 and 14).
+- [x] **Phase 6 — Topics page and type refinement (2026-10-20):** topic cards moved to `chapters.html`, headings switched to Newsreader, softer radii and shadows, landing copy edited to remove AI-sounding phrasing. Committed locally, not yet pushed or deployed.
 
 ## 8. Definition of done
 
@@ -253,7 +259,7 @@ Log in / sign up · user accounts · backend / database · lesson content · puz
 - The hero image is the icosahedron (20 faces). No mascot.
 - No logo existed, so a simple icosahedron mark + wordmark was designed (`assets/mark.svg`).
 - The footer is one copyright line with no links and no socials.
-- The landing page does not host puzzles or lessons. It shows the eight topics only.
+- The landing page does not host puzzles or lessons, and since 2026-10-20 it does not show the topic cards either. They live on `chapters.html`.
 
 ## 12. QA results (2026-10-19)
 
@@ -271,6 +277,8 @@ Fixes made during QA:
 - The Google Fonts stylesheet no longer blocks rendering (mobile performance 90 → 100).
 - The brand link now has a 44 px tap target, and the skip link has a stronger focus ring.
 
+Everything above was measured before the 2026-10-20 changes (the `chapters.html` split and the Newsreader headings). Since then only these were checked: no console errors on either page, no horizontal scroll on the landing page at 320 px, and `node --test` passes. Lighthouse, the 320 px layout of `chapters.html`, keyboard order on both pages and layout shift from the new web font have not been re-run.
+
 Not covered, and worth doing before launch:
 - **A real screen reader** (NVDA, VoiceOver). Only the accessibility tree and Lighthouse were checked.
 - **Real phones and other browsers.** Everything ran in Chrome. Safari and Firefox are untested, in particular the `mask-image` fade of the page grid and the math symbols in the topic tiles on macOS and Android.
@@ -279,7 +287,7 @@ Not covered, and worth doing before launch:
 
 ## 13. Deploy to GitHub Pages
 
-**Prepared in the repo (done):** branch renamed to `main`; `.github/workflows/pages.yml` runs `node --test`, copies only `index.html`, `js/` and `assets/` into `_site/` (with the CSS inlined into `index.html` by `scripts/inline-css.mjs`), and publishes that. The staged site was served from a subpath (`/multifaceted-mathematics/`) and loaded with no errors, so the site works both at `user.github.io/repo/` and at a custom domain. All paths in the site are relative.
+**Prepared in the repo (done):** branch renamed to `main`; `.github/workflows/pages.yml` runs `node --test`, copies only `index.html`, `chapters.html`, `js/` and `assets/` into `_site/` (with the CSS inlined into both pages by `scripts/inline-css.mjs`), and publishes that. The staged site was served from a subpath (`/multifaceted-mathematics/`) and loaded with no errors, so the site works both at `user.github.io/repo/` and at a custom domain. All paths in the site are relative.
 
 **Steps for the owner (needs your GitHub account):**
 1. Create a new repository on github.com, for example `multifaceted-mathematics`. Leave "Add a README", ".gitignore" and "license" **unchecked**, so it starts empty. Choose **Public** (GitHub Pages on a private repository needs a paid plan).
@@ -298,7 +306,7 @@ Not covered, and worth doing before launch:
 - Re-run Lighthouse on the live address.
 - Optional: a custom domain (*Settings → Pages → Custom domain*, plus a DNS record at the domain registrar).
 
-**Good to know:** the live site contains only the four items above, but a public repository also exposes `PLAN.md`, `tests/`, `.claude/` and `.hallmark/`. Remove them from the repository, or make it private on a paid plan, if that matters. The workflow uses `actions/checkout@v4`, `configure-pages@v5`, `upload-pages-artifact@v3` and `deploy-pages@v4`; if GitHub reports a newer major version, bump the number.
+**Good to know:** the live site contains only the items above, but a public repository also exposes `PLAN.md`, `tests/`, `.claude/` and `.hallmark/`. Remove them from the repository, or make it private on a paid plan, if that matters. The workflow uses `actions/checkout@v4`, `configure-pages@v5`, `upload-pages-artifact@v3` and `deploy-pages@v4`; if GitHub reports a newer major version, bump the number.
 
 ## 14. Live performance (2026-10-19)
 
