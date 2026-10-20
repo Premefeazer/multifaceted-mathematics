@@ -1,9 +1,5 @@
 # Product
 
-## Register
-
-product
-
 ## Users
 
 Students aged about 12 to 18 (middle and high school) who study math on their own, often in short gaps between classes. They decide within seconds whether a page is worth their time, and they notice when something talks down to them. Teachers are a secondary audience: they look for something trustworthy they can recommend or assign.

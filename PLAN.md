@@ -93,7 +93,7 @@ Motion rules:
 - Talk to teenagers like a sharp, respectful mentor: direct, short, confident and precise. Never childish, never corporate.
 - Banned phrases: *Unlock your potential · Revolutionize · Seamless · Empower · Journey · Dive in · Master math effortlessly*
 - No invented numbers, reviews or logos. With no real users and no lessons yet, we claim nothing. Every unfinished thing says *Coming soon*.
-- No descriptive line under a heading or beside a button (decided 2026-10-20). The topics, the lesson screen and the roadmap explain themselves, and such lines read as filler. Do not add them back.
+- No descriptive line under a heading or beside a button (decided 2026-10-20). The topics and the lesson screen explain themselves, and such lines read as filler. Do not add them back.
 
 | Where | Copy |
 |---|---|
@@ -153,10 +153,10 @@ Motion rules:
 | 1 | Hero | Headline left, draggable icosahedron right. On mobile the headline comes first. | Built |
 | 2 | Topics | 8 topic cards, two large then six small, each with a symbol tile, a thought-provoking question and a *Coming soon* tag. | Moved to `chapters.html` (2026-10-20) |
 | 3 | How a lesson works | Explain the method with a lesson screen built from real HTML (no fake phone frame) plus callouts: *One idea per screen* · *You try first, we explain after* · *Hints, not answers* · *Five minutes, tops*. | Built |
-| 4 | What's next | Honest roadmap that also explains why there is no login yet: *Now:* topic overview → *Next:* first lessons → *Later:* accounts, streaks, progress. | Built |
+| 4 | What's next | Honest roadmap that also explained why there is no login yet: *Now* / *Next* / *Later*. | Removed 2026-10-20: it read as an internal team update, and the *Coming soon* tags already say what is unfinished |
 | 5 | Closing + footer | Big line *Every problem has another side.* + button. A dark panel with *Every problem has another side.* and an **Explore topics** button. The footer is one © line, no links. | Built |
 
-**Since 2026-10-20 the diagram above is two pages.** The landing page keeps sections 0, 1, 3, 4 and 5, so it runs hero, ticker, how a lesson works, what's next, closing. Section 2 (the topic cards) is the whole body of `chapters.html`, under the same nav and footer; its nav button reads **Home**. On the landing page the nav button **Topics** and both **Explore topics** buttons link to `chapters.html`, and the skip link jumps to *How a lesson works*.
+**Since 2026-10-20 the diagram above is two pages.** The landing page keeps sections 0, 1, 3, 4 and 5, so it runs hero, ticker, how a lesson works, closing. Section 2 (the topic cards) is the whole body of `chapters.html`, under the same nav and footer; its nav button reads **Home**. On the landing page the nav button **Topics** and both **Explore topics** buttons link to `chapters.html`, and the skip link jumps to *How a lesson works*.
 
 ### 5.1 Topics (in learning order)
 
@@ -220,6 +220,7 @@ Multifaceted Mathematics/
 - [x] **Phase 5 — Deploy to GitHub Pages** (live at https://premefeazer.github.io/multifaceted-mathematics/; see sections 13 and 14).
 - [x] **Phase 6 — Topics page and type refinement (2026-10-20):** topic cards moved to `chapters.html`, headings switched to Newsreader, softer radii and shadows, landing copy edited to remove AI-sounding phrasing. Same day: full-width header, a topic ticker under the hero, and the taglines under headings and beside the hero button removed.
 - [x] **Phase 7 — Playable first (2026-10-20, from the first critique):** the example lesson card is now interactive (pick any answer, each has its own explanation; the card keeps one height) and sits right under the ticker, with the heading above it; the topic symbols are on the solid's faces and picking one links to its topic. The harden items followed the same day: a pause button on the ticker (WCAG 2.2.2), Enter or Space steps through the topic faces and Escape clears the pick, the `chapters.html` card names are `h2` (no more h1 to h3 skip), and headings and paragraphs use `text-wrap: balance` and `pretty` so no line ends on one word. Still open from the critique: trimming the roadmap, one CTA name, an About line in the footer. The detector still reports the ticker (marquee, and a cramped-padding warning that is a false positive for a full-bleed band) and the graph-paper background (advisory); both are deliberate. Committed locally, not yet pushed or deployed.
+- [x] **Phase 8 — Critique clean-up (2026-10-20):** the roadmap section is gone (CSS included); the footer has a one-line description and a link to the source repository; the loose `DESIGN.md` variants and the deprecated `## Register` line in `PRODUCT.md` were removed. The nav button stays **Topics** and its target page is titled Topics. Open: who runs the project and a contact line for teachers (needs your input), and the live Lighthouse re-run.
 
 ## 8. Definition of done
 

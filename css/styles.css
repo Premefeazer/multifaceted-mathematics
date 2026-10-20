@@ -443,7 +443,6 @@ h3 {
 
 .topics,
 .how,
-.next,
 .closing {
   max-width: 75rem;
   margin-inline: auto;
@@ -456,8 +455,7 @@ h3 {
 
 .topics__head h1,
 .topics__head h2,
-.how h2,
-.next h2 {
+.how h2 {
   font-size: clamp(2.125rem, 1.2rem + 3.2vw, 3.25rem);
   font-weight: 500;
   line-height: 1.08;
@@ -564,7 +562,6 @@ h3 {
 @media (max-width: 40rem) {
   .topics,
   .how,
-  .next,
   .closing {
     padding-inline: var(--space-4);
   }
@@ -809,75 +806,6 @@ h3 {
   white-space: nowrap;
 }
 
-/* ---------- what's next: a three-step line ---------- */
-
-.roadmap {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: var(--space-8);
-  margin: var(--space-12) 0 0;
-  padding: 0;
-  list-style: none;
-}
-
-.stage {
-  position: relative;
-  padding-top: var(--space-8);
-}
-
-.stage::before,
-.stage::after {
-  content: "";
-  position: absolute;
-  top: 0;
-}
-
-.stage::before {
-  left: 0;
-  width: 1rem;
-  height: 1rem;
-  background: var(--color-sheet);
-  border: 2px solid var(--color-ink);
-  border-radius: 50%;
-}
-
-.stage::after {
-  top: 0.5rem;
-  left: 1.5rem;
-  right: calc(var(--space-8) * -1 + 0.5rem);
-  border-top: 2px dashed var(--color-ink-soft);
-}
-
-.stage--now::before {
-  background: var(--color-ink);
-}
-
-.stage--now::after {
-  border-top-style: solid;
-  border-top-color: var(--color-ink);
-}
-
-.stage--later::before {
-  border-style: dashed;
-  border-color: var(--color-ink-soft);
-}
-
-.stage--later::after {
-  display: none;
-}
-
-.stage h3 {
-  margin: 0;
-  font: 500 1.375rem / 1.2 var(--font-display);
-  letter-spacing: -0.01em;
-}
-
-.stage p {
-  max-width: 28ch;
-  margin-top: var(--space-1);
-  color: var(--color-ink-soft);
-}
-
 /* ---------- closing ---------- */
 
 .closing {
@@ -957,30 +885,6 @@ h3 {
     padding: var(--space-6);
   }
 
-  .roadmap {
-    grid-template-columns: minmax(0, 1fr);
-    gap: var(--space-6);
-    margin-top: var(--space-8);
-  }
-
-  .stage {
-    padding: 0 0 0 var(--space-8);
-  }
-
-  .stage::after {
-    top: 1.5rem;
-    bottom: calc(var(--space-6) * -1 + 0.5rem);
-    left: 0.5rem;
-    right: auto;
-    border-top: 0;
-    border-left: 2px dashed var(--color-ink-soft);
-  }
-
-  .stage--now::after {
-    border-left-style: solid;
-    border-left-color: var(--color-ink);
-  }
-
   .closing__panel {
     padding: var(--space-12) var(--space-6);
   }
@@ -995,11 +899,33 @@ h3 {
 /* ---------- footer ---------- */
 
 .foot {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0 var(--space-6);
   max-width: 75rem;
   margin-inline: auto;
-  padding: var(--space-8) var(--space-6);
+  padding: var(--space-4) var(--space-6) var(--space-8);
   color: var(--color-ink-soft);
   font: 400 var(--text-sm) / 1.4 var(--font-mono);
+}
+
+.foot a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 2.75rem;
+  color: inherit;
+  text-underline-offset: 0.25em;
+}
+
+.foot a:hover {
+  color: var(--color-ink);
+}
+
+.foot a:focus-visible {
+  outline: 3px solid var(--color-sky-deep);
+  outline-offset: 3px;
+  border-radius: var(--radius-md);
 }
 
 /* ---------- small screens ---------- */

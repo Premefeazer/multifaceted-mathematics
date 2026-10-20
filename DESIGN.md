@@ -176,7 +176,7 @@ A bright, cool, daylight palette: sky-tinted ground, clean white sheets, navy in
 ### Hierarchy
 - **Display** (500, clamp(2.75rem, 1rem + 6.6vw, 5.25rem), 1.02): the hero headline only; letter-spacing -0.025em.
 - **Headline** (500, clamp(2.125rem, 1.2rem + 3.2vw, 3.25rem), 1.08): section headings; letter-spacing -0.02em.
-- **Title** (500, 1.375rem to 1.875rem, 1.15): topic names, lesson principles, roadmap stages, ticker items.
+- **Title** (500, 1.375rem to 1.875rem, 1.15): topic names, lesson principles, ticker items.
 - **Body** (400, 1.0625rem, 1.6): questions and supporting text; keep lines to 65 to 75ch.
 - **Label** (600, 1rem, 1): button text and the brand wordmark (Manrope; 800 for the wordmark).
 
@@ -185,7 +185,7 @@ A bright, cool, daylight palette: sky-tinted ground, clean white sheets, navy in
 
 ## Layout
 
-A single 75rem content column, centered, with 1.5rem side padding (1rem under 40rem). The hero is two columns (1.05fr text, 1fr solid) and stacks on tablet. The topic grid is six columns where the first two cards span three and the rest span two, collapsing to two columns under 64rem and one under 40rem. The lesson section is two columns (1.1fr / 1fr) that stack under 52rem; the roadmap is three columns that become a vertical line on phones.
+A single 75rem content column, centered, with 1.5rem side padding (1rem under 40rem). The hero is two columns (1.05fr text, 1fr solid) and stacks on tablet. The topic grid is six columns where the first two cards span three and the rest span two, collapsing to two columns under 64rem and one under 40rem. The lesson section is two columns (1.1fr / 1fr) that stack under 52rem.
 
 Spacing follows a 4pt scale (4, 8, 12, 16, 24, 32, 48, 64, 96 px). Sections breathe with 48 to 64px of vertical padding; the closing panel uses 96px. The header is a fixed full-width bar whose contents align to the same 75rem column, and a full-bleed ticker band sits directly under the hero.
 
